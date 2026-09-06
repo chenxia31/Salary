@@ -28,14 +28,16 @@
 - 升级 `Features/Settings/SettingsView.swift`：可视化图标选择网格、配色色盘、目标增删改列表与会员中心
 - 扩充单元测试 `SalaryEngineTests.swift`（12 项测试用例全部秒级通过）
 - 追加架构决策 `#005`，自动化测试与 `preflight.sh` 检查全绿
+- 已成功推送到 GitHub 远程仓库：`https://github.com/chenxia31/Salary.git` (main 分支)
 
 ## 三、下一棒从这里开始
 
 **目标**：配置正式 App Store Connect In-App Purchase 商品或增加多设备 iCloud 同步。
 
 **入口**：
-- `open SalaryTicker.xcodeproj` 点击 Run
-- `swift run SalaryTicker`
+- 远程仓库：`https://github.com/chenxia31/Salary.git`
+- 本地工程：`open SalaryTicker.xcodeproj` 点击 Run
+- CLI 运行：`swift run SalaryTicker`
 
 ## 四、当前是"半成品"的地方
 
