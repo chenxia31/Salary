@@ -81,3 +81,17 @@
 - 代价：需要维护本地试用期与 StoreKit 2 交易监听双态
 - 不可逆性：可逆
 
+---
+
+## #006 采用自动化脚本生成独立 Release DMG 分发镜像 · 2026-09-06 · 已定
+
+- 背景：用户需要一键安装体验应用，避免依赖本地 Xcode 编译
+- 选项：
+  - A 仅提供源码让用户自行编译 —— 对非开发人员门槛过高
+  - B 引入第三方 DMG 制作工具 (如 create-dmg npm/homebrew) —— 增加外部环境依赖
+  - C 编写原生 `scripts/build_dmg.sh` 脚本，利用 macOS 内置 `hdiutil` 生成 UDZO 压缩镜像与 Applications 快捷方式
+- 结论：选 C
+- 代价：需要维护 shell 打包脚本与 Release 构件生命周期
+- 不可逆性：可逆
+
+

@@ -50,6 +50,7 @@ targets:
     deploymentTarget: "14.0"
     sources:
       - path: App
+      - path: Resources/AppIcon.icns
     dependencies:
       - target: SalaryTickerCore
       - target: SalaryTickerFeatures
@@ -58,6 +59,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.openclaw.salaryticker
         PRODUCT_NAME: SalaryTicker
         INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_CFBundleIconFile: AppIcon
         GENERATE_INFOPLIST_FILE: YES
         SDKROOT: macosx
         SUPPORTED_PLATFORMS: macosx

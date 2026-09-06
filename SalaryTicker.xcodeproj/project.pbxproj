@@ -18,6 +18,7 @@
 		8F81DB77061B89E00F2D7367 /* SalaryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E9C9C0F364A9012AFCCDD4 /* SalaryEngine.swift */; };
 		924DB3B21AB820EF3736B880 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394D53E58167B737ABD8E50 /* SettingsView.swift */; };
 		AE67326EDAA07A542693E444 /* StatsBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351B788095C381266882362 /* StatsBreakdownView.swift */; };
+		CF392B95C96C543A6C57312D /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 11A19A4C7CBB03AE8B040A3B /* AppIcon.icns */; };
 		D5167466FFE7155BCD7DA2EB /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AA12156CA981B7E9FC442C /* MilestoneView.swift */; };
 		DAE1D193E45607BCE962830B /* libSalaryTickerFeatures.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F46229A5B9023693E2CEAF /* libSalaryTickerFeatures.a */; };
 		E13F7C346EF236C204FB147B /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5779EFB7DBC8301D314EAE /* AppLogger.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		0C5382A12402C8B2B979197D /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		11A19A4C7CBB03AE8B040A3B /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarViewModel.swift; sourceTree = "<group>"; };
 		4351B788095C381266882362 /* StatsBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBreakdownView.swift; sourceTree = "<group>"; };
 		4394D53E58167B737ABD8E50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				2F6C1EE2166331846E00CF29 /* App */,
 				EF7909B513DCC2F40195D673 /* Core */,
 				7D0BF3C673A420E6C91AD418 /* Features */,
+				B6F8C70DE491EB2AF728305F /* Resources */,
 				BCF123A5B03CDC502A54F693 /* Tests */,
 				D1CCDC994C2B1D8641F931F3 /* Products */,
 			);
@@ -193,6 +196,14 @@
 				4351B788095C381266882362 /* StatsBreakdownView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		B6F8C70DE491EB2AF728305F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11A19A4C7CBB03AE8B040A3B /* AppIcon.icns */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BCF123A5B03CDC502A54F693 /* Tests */ = {
@@ -288,6 +299,7 @@
 			buildConfigurationList = 5C0FC1F3218EF1B40C5DE805 /* Build configuration list for PBXNativeTarget "SalaryTicker" */;
 			buildPhases = (
 				26FD58DABDA1B3402D2A21D3 /* Sources */,
+				0863516058603C79B6644810 /* Resources */,
 				724D449722DE1AFE2303CA2F /* Frameworks */,
 			);
 			buildRules = (
@@ -335,6 +347,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0863516058603C79B6644810 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF392B95C96C543A6C57312D /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		9D9DFB8F88037F65C56DBE0B /* Copy Swift Objective-C Interface Header */ = {
@@ -602,6 +625,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
 				INFOPLIST_KEY_LSUIElement = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -626,6 +650,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
 				INFOPLIST_KEY_LSUIElement = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

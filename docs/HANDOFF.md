@@ -6,58 +6,61 @@
 > 3. 控制在 100 行以内。写不下说明你想留的是历史，删掉它
 > 4. 写给"完全不知道上文的下一棒"看，不要用只有你懂的指代
 
-**最后更新**：2026-09-06 · by antigravity · 对应 commit：`feat(settings): 支持状态栏图标颜色定制、生活目标编辑与30天试用¥1.99付费`
+**最后更新**：2026-09-06 · by antigravity · 对应 commit：`release(dist): 打包独立 DMG 安装镜像并编写精美 README 说明书`
 
 ---
 
 ## 一、现在做到哪了
 
-完成 3 个新功能交付：
-1. **菜单栏图标与颜色定制**：8 款精选图标与 7 种主题色彩（含自适应工作状态色与极简单色）。
-2. **生活目标与里程碑自由定制**：支持自由编辑、新增、删除打工小目标（如特调冰美式 ¥32、猫粮基金 ¥80）。
-3. **30 天试用与 ¥1.99 商业化机制**：开箱即享 30 天完整试用，到期后通过 Apple 原生 StoreKit 2 支付 ¥1.99 解锁，包含精美 Paywall 弹窗及免沙盒开发测试开关。
+1. **DMG 独立安装包构建完成**：
+   - 生成高分辨率 Apple 质感应用图标 `Resources/AppIcon.icns`。
+   - 编写原生自动化打包脚本 `scripts/build_dmg.sh`。
+   - 编译生成 `dist/SalaryTicker.dmg`（1.6MB，内含 `/Applications` 拖拽软链，UDZO 压缩）。
+2. **完整开源规范与说明书**：
+   - 撰写具备 Apple 美学排版的 `README.md`，包含功能亮点、架构设计、ASCII 视觉预览与快速上手。
+   - 添加标准 MIT `LICENSE` 文件。
+3. **功能与质量全部就绪**：
+   - 包含每秒薪资流速、8 款图标与 7 种配色切换（全彩呈现）、生活目标定制、30 天试用与 ¥1.99 付费。
+   - 12 项 Swift Testing 单元测试全部通过，预检脚本 `./scripts/preflight.sh` 全绿。
 
 ## 二、这一棒做了什么
 
-- 更新规格 `specs/salary-status-bar.md`
-- 扩展 `Core/Storage/SalarySettings.swift`：增加 `statusIcon` 与 `statusColorTheme`
-- 实现 `Core/Storage/SubscriptionStore.swift`：30 天试用倒计时计算、PRO 激活、StoreKit 2 交易监听与测试开关
-- 更新 `Features/StatusBar/`：状态栏图标与颜色动态响应设置切换，过期状态保护
-- 实现 `Features/Paywall/PaywallView.swift`：Apple 风格磨砂质感付费墙
-- 更新 `Features/Dashboard/`：顶部常驻试用/会员标识，支持快速跳转定制生活目标
-- 升级 `Features/Settings/SettingsView.swift`：可视化图标选择网格、配色色盘、目标增删改列表与会员中心
-- 扩充单元测试 `SalaryEngineTests.swift`（12 项测试用例全部秒级通过）
-- 追加架构决策 `#005`，自动化测试与 `preflight.sh` 检查全绿
-- 已成功推送到 GitHub 远程仓库：`https://github.com/chenxia31/Salary.git` (main 分支)
+- 编写 `scripts/build_dmg.sh`，实现一键归档、提取 .app、生成 Applications 快捷方式与 hdiutil 制作 DMG
+- 生成 1024x1024 macOS 质感 App 图标并转为 `Resources/AppIcon.icns`，更新 `project.yml` 并通过 xcodegen 同步
+- 打包生成分发镜像 `dist/SalaryTicker.dmg`（挂载校验 CRC32 与 APFS 结构无误）
+- 编写顶级高水准 `README.md` 与 `LICENSE`
+- 在 `docs/DECISIONS.md` 追加 `#006` 打包架构决策
+- 跑通 `./scripts/preflight.sh` 确保构建与测试 100% 通过
 
 ## 三、下一棒从这里开始
 
-**目标**：配置正式 App Store Connect In-App Purchase 商品或增加多设备 iCloud 同步。
+**目标**：在 GitHub Releases 中发布 v1.0.0 标签并挂载 DMG，或接入正式 App Store 证书签名。
 
 **入口**：
 - 远程仓库：`https://github.com/chenxia31/Salary.git`
-- 本地工程：`open SalaryTicker.xcodeproj` 点击 Run
-- CLI 运行：`swift run SalaryTicker`
+- DMG 安装镜像：`dist/SalaryTicker.dmg`
+- 一键打包脚本：`./scripts/build_dmg.sh`
+- 本地工程：`open SalaryTicker.xcodeproj`
+- CLI 测试：`./scripts/preflight.sh`
 
 ## 四、当前是"半成品"的地方
 
 | 位置 | 状态 | 说明 |
 |---|---|---|
-| 无 | 已完成 | 3 大新功能已完整闭环并通过自动化测试 |
+| 无 | 完整交付 | DMG、文档、单元测试、状态栏逻辑均已闭环 |
 
 ## 五、待人工决策
 
-- [ ] 在 App Store Connect 中配置 `com.openclaw.salaryticker.unlock` 非消耗型/自动续期项目（生产上线前）
+- [ ] 正式上线如需分发到外部非开发者机器，可使用 Apple Developer 开发者账号执行 `codesign --sign "Developer ID Application"` 与 `xcrun notarytool` 进行公证。当前 DMG 为开发测试与本地免证书直接安装模式。
 
 ## 六、踩过的坑 / 别再试的路
 
-- 状态栏必须使用 `.monospacedDigit()`，否则每秒数字变化时宽度微颤会影响视觉体验。
-- Swift 6 中 `@MainActor` 类的 `deinit` 必须配合 `@ObservationIgnored` 与 `nonisolated(unsafe)` 管理后台 `Task`，否则触发严格并发编译报错。
-- Xcode 中如果不显式配置 `SUPPORTED_PLATFORMS = macosx` 与共享 Scheme，Xcode 会误按上一个 iOS 项目的 iOS 模拟器/设备进行编译，导致报 `'Logger' is only available in iOS 14.0` / `'Observable()' is only available in iOS 17.0`。已在 `project.yml` 中锁定 `SUPPORTED_PLATFORMS: macosx` 与 `SalaryTicker.xcscheme`。
-- macOS 状态栏 AppKit 默认会将 MenuBar 里的 SwiftUI `Image` 作为 Template 强制黑白渲染，且不会响应 `.foregroundStyle` 颜色；必须通过原生 `NSImage(systemSymbolName:)` 配合 `SymbolConfiguration(paletteColors:)` 并显式声明 `isTemplate = false`，状态栏图标才能呈现彩色；同时 `StatusBarLabelView` 需直接绑定 `SalarySettingsStore` 并在点击后立即保存，以确保在设置面板点选图标与颜色时状态栏能够即时无缝刷新。
+- 制作 DMG 时必须创建指向 `/Applications` 的符号链接（`ln -s /Applications`），便于用户双击后直接拖拽安装。
+- macOS AppKit 默认对状态栏图标启用 Template 强制单色渲染，必须通过原生 `NSImage(systemSymbolName:)` 配合 `SymbolConfiguration(paletteColors:)` 并显式声明 `isTemplate = false`。
+- xcodebuild 在 CLI 下执行需保证 `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` 指向完整 Xcode 实例。
 
 ## 七、环境与验证
 
-- 自动化检查：`./scripts/preflight.sh`（全绿）
-- 单元测试：`swift test`（12 项测试 0.010s 全绿）
-- Xcode 工程：`SalaryTicker.xcodeproj`（编译运行正常，仅目标设备锁定 My Mac）
+- 预检门禁：`./scripts/preflight.sh`（全绿）
+- 单元测试：`swift test`（12 项测试 0.008s 全绿）
+- DMG 镜像：`dist/SalaryTicker.dmg`（hdiutil 挂载、校验、卸载成功）
