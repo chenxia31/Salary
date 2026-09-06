@@ -125,40 +125,7 @@ public struct PaywallView: View {
             }
             .font(.caption2)
             .foregroundStyle(.secondary)
-
-            Divider()
-
-            // 快捷测试调测区（便于体验与审查）
-            VStack(alignment: .leading, spacing: 6) {
-                Text(String(localized: "🛠 体验与测试工具箱"))
-                    .font(.caption2.weight(.bold))
-                    .foregroundStyle(.secondary)
-
-                HStack(spacing: 8) {
-                    Button(String(localized: "重置试用")) {
-                        subscriptionStore.resetTrial()
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.mini)
-
-                    Button(String(localized: "模拟到期")) {
-                        subscriptionStore.simulateTrialExpired()
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.mini)
-
-                    Button(String(localized: "快捷激活特权")) {
-                        withAnimation(.spring(duration: 0.35)) {
-                            subscriptionStore.unlockProDirectly()
-                            justActivated = true
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.mini)
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 14)
+            .padding(.bottom, 16)
         }
         .frame(width: 390)
         .background(.ultraThinMaterial)
@@ -307,8 +274,18 @@ public struct PaywallView: View {
         return QRCodeGenerator.generate(from: "https://qr.alipay.com/fkx13384rierygpezadhk2e", size: 150)
     }
 
-    /// 微信支付二维码图片
+    /// 用户专属微信支付收款码图片
     private var wechatQRImage: NSImage? {
-        return QRCodeGenerator.generate(from: "https://github.com/chenxia31/Salary#wechat-pay", size: 150)
+        if let url = Bundle.main.url(forResource: "wechat_qr", withExtension: "jpg"),
+           let img = NSImage(contentsOf: url) {
+            return img
+        }
+        if let img = NSImage(named: "wechat_qr") {
+            return img
+        }
+        if let devImg = NSImage(contentsOfFile: "Resources/wechat_qr.jpg") {
+            return devImg
+        }
+        return QRCodeGenerator.generate(from: "wxp://f2f0aDonje4-KgQivJ390wPoRky09pcHLId4m4XLNpgYq_k", size: 150)
     }
 }

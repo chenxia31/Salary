@@ -52,6 +52,7 @@ targets:
       - path: App
       - path: Resources/AppIcon.icns
       - path: Resources/alipay_qr.jpg
+      - path: Resources/wechat_qr.jpg
     dependencies:
       - target: SalaryTickerCore
       - target: SalaryTickerFeatures

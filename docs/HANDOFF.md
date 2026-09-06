@@ -6,60 +6,57 @@
 > 3. 控制在 100 行以内。写不下说明你想留的是历史，删掉它
 > 4. 写给"完全不知道上文的下一棒"看，不要用只有你懂的指代
 
-**最后更新**：2026-09-06 · by antigravity · 对应 commit：`feat(sponsor): 将付费改为三档爱心赞助模式（喝杯水/加鸡腿/瑞幸咖啡）`
+**最后更新**：2026-09-06 · by antigravity · 对应 commit：`release(paywall): 移除测试工具箱并接入专属微信支付收款码`
 
 ---
 
 ## 一、现在做到哪了
 
-1. **三档随喜爱心赞助全面落地**：
-   - 将生硬的商业买断调整为打工人暖心赞助模式：
-     - 💧 **¥1.99 · 喝杯水**（解渴润喉）
-     - 🍗 **¥5.99 · 加鸡腿**（元气满满）
-     - ☕ **¥9.99 · 瑞幸咖啡**（灵感飞扬）
-   - 用户选择任意档位均展示专属支付宝收款码与微信二维码，扫码后点击一键激活 PRO 永久特权。
-   - `SettingsView` 与 `DashboardView` 提示文案同步更新为「赞助支持 / 赞助中心」。
-2. **DMG 镜像与文档全量同步**：
-   - 重新打包生成 `dist/SalaryTicker.dmg`（1.8MB），内置全新赞助模块。
-   - 追加架构决策 `#008` 到 `docs/DECISIONS.md`，更新 `README.md` 与 `specs/salary-status-bar.md`。
-3. **自动化测试与质量门禁**：
+1. **发布态纯净界面**：
+   - 从 `PaywallView.swift` 彻底移除「🛠 体验与测试工具箱」，界面保持 Apple 原生高质感。
+2. **专属收款码双通道闭环**：
+   - 支付宝：`Resources/alipay_qr.jpg`（用户专属收款码原图，含中心头像）。
+   - 微信支付：从 Downloads 目录提取并接入 `Resources/wechat_qr.jpg`（用户专属收款码，协议 `wxp://f2f0aDonje4-KgQivJ390wPoRky09pcHLId4m4XLNpgYq_k`）。
+   - 在 Paywall 面板中切换「🔵 支付宝扫码」与「🟢 微信支付」时，均展示用户本人的高清收款码原图。
+3. **分发构件全量就绪**：
+   - 重新打包生成纯净发布版 `dist/SalaryTicker.dmg`（1.8MB）。
    - 12 项 Swift Testing 单元测试全部通过，预检脚本 `./scripts/preflight.sh` 全绿。
 
 ## 二、这一棒做了什么
 
-- 实现 `SponsorTier` 数据结构并在 `PaywallView.swift` 呈现三档赞助卡片
-- 联动支付宝专属收款码（`Resources/alipay_qr.jpg`）与微信双通道扫码
-- 更新 `SettingsView` 与 `DashboardView` 按钮与横幅文案
-- 更新 `README.md`、`specs/salary-status-bar.md` 并追加架构决策 `#008`
-- 重新运行 `./scripts/build_dmg.sh` 更新 `dist/SalaryTicker.dmg`
-- 跑通 `./scripts/preflight.sh` 并保持测试 100% 通过
+- 从 `Downloads/wxzf.jpg` 提取用户真实微信收款码并保存为 `Resources/wechat_qr.jpg`
+- 更新 `project.yml` 引入 `wechat_qr.jpg` 资源并通过 xcodegen 同步工程
+- 更新 `SalarySettings.swift` 与 `PaywallView.swift` 微信支付配置与图片渲染
+- 彻底移除 `PaywallView.swift` 中的「体验与测试工具箱」
+- 重新运行 `./scripts/build_dmg.sh` 编译打包 `dist/SalaryTicker.dmg`
+- 预检通过，更新交接文档
 
 ## 三、下一棒从这里开始
 
-**目标**：在 GitHub Releases 中发布 v1.0.0 标签并挂载 DMG，或在推特/V2EX 发布推广。
+**目标**：在 GitHub Releases 中发布正式 release，或将 DMG 上传分发。
 
 **入口**：
 - 远程仓库：`https://github.com/chenxia31/Salary.git`
 - DMG 安装镜像：`dist/SalaryTicker.dmg`
-- 赞助测试：点击状态栏 -> 展开面板 -> 赞助支持 -> 体验三档选择与一键激活
+- 赞助测试：打开 App -> 点击面板爱心赞助 -> 检查支付宝与微信收款码图片
 
 ## 四、当前是"半成品"的地方
 
 | 位置 | 状态 | 说明 |
 |---|---|---|
-| 无 | 完整交付 | 三档赞助切换、专属收款码展示、扫码激活均已闭环 |
+| 无 | 完整交付 | 支付宝与微信专属收款码展示、三档爱心赞助、一键激活闭环已就绪 |
 
 ## 五、待人工决策
 
-- [ ] 后续若需要换用微信个人赞赏码图片，可同样放置于 `Resources/wechat_qr.jpg` 并替换默认资源。
+- [ ] 正式发布对外分发时，可按需对 DMG 进行 Developer ID 签名与 Notarization 公证。
 
 ## 六、踩过的坑 / 别再试的路
 
-- `SubscriptionStore.statusBadgeText` 需保持对已解锁状态输出 `PRO 会员`，保证单元测试断言与现有状态机契约不受影响。
-- 赞助模式下任意金额档位均可激活完整功能，尊重用户自愿支持原则。
+- 微信与支付宝收款码均有独特的二维码样式与中间标识，使用原图渲染能给扫码用户最高的信任感与原生视觉体验。
+- 每次新增 Resource 图片资源后，必须运行 `xcodegen generate`，否则 Xcode 打包的 app bundle 内无法检索到新加入的资源文件。
 
 ## 七、环境与验证
 
 - 预检门禁：`./scripts/preflight.sh`（全绿）
-- 单元测试：`swift test`（12 项测试 0.005s 全绿）
+- 单元测试：`swift test`（12 项测试 0.006s 全绿）
 - DMG 镜像：`dist/SalaryTicker.dmg`（打包生成成功，大小 1.8MB）

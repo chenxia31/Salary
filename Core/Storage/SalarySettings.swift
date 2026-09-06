@@ -110,7 +110,7 @@ public struct SalarySettings: Codable, Sendable, Equatable {
             MilestoneItem(title: "下班奶茶", targetAmount: 200.0, icon: "mug.fill"),
             MilestoneItem(title: "日赚千元", targetAmount: 1000.0, icon: "sparkles")
         ],
-        wechatPayQRContent: "https://github.com/chenxia31/Salary#wechat-pay",
+        wechatPayQRContent: "wxp://f2f0aDonje4-KgQivJ390wPoRky09pcHLId4m4XLNpgYq_k",
         alipayPayQRContent: "https://qr.alipay.com/fkx13384rierygpezadhk2e"
     )
 
@@ -133,7 +133,7 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         statusIcon: String = "banknote.fill",
         statusColorTheme: String = "dynamic",
         milestones: [MilestoneItem] = SalarySettings.default.milestones,
-        wechatPayQRContent: String = "https://github.com/chenxia31/Salary#wechat-pay",
+        wechatPayQRContent: String = "wxp://f2f0aDonje4-KgQivJ390wPoRky09pcHLId4m4XLNpgYq_k",
         alipayPayQRContent: String = "https://qr.alipay.com/fkx13384rierygpezadhk2e"
     ) {
         self.monthlySalary = monthlySalary
@@ -186,7 +186,7 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         self.statusIcon = try container.decodeIfPresent(String.self, forKey: .statusIcon) ?? "banknote.fill"
         self.statusColorTheme = try container.decodeIfPresent(String.self, forKey: .statusColorTheme) ?? "dynamic"
         self.milestones = try container.decodeIfPresent([MilestoneItem].self, forKey: .milestones) ?? SalarySettings.default.milestones
-        self.wechatPayQRContent = try container.decodeIfPresent(String.self, forKey: .wechatPayQRContent) ?? "https://github.com/chenxia31/Salary#wechat-pay"
+        self.wechatPayQRContent = try container.decodeIfPresent(String.self, forKey: .wechatPayQRContent) ?? "wxp://f2f0aDonje4-KgQivJ390wPoRky09pcHLId4m4XLNpgYq_k"
         self.alipayPayQRContent = try container.decodeIfPresent(String.self, forKey: .alipayPayQRContent) ?? "https://qr.alipay.com/fkx13384rierygpezadhk2e"
     }
 }
