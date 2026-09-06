@@ -76,7 +76,7 @@ public final class SubscriptionStore {
         isProUnlocked || isTrialActive
     }
 
-    /// 会员状态标签文本
+    /// 会员/赞助状态标签文本
     public var statusBadgeText: String {
         if isProUnlocked {
             return String(localized: "PRO 会员")

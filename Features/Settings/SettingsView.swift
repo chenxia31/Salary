@@ -108,7 +108,7 @@ public struct SettingsView: View {
                     Text(subscriptionStore.statusBadgeText)
                         .font(.callout.weight(.bold))
                         .foregroundStyle(subscriptionStore.isProUnlocked ? .green : .orange)
-                    Text(String(localized: "30 天全功能免费试用 · ¥1.99 买断永久"))
+                    Text(String(localized: "30 天全功能免费试用 · 随喜赞助喝杯水解锁"))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
@@ -119,13 +119,13 @@ public struct SettingsView: View {
                     isShowingPaywall = true
                 } label: {
                     HStack(spacing: 4) {
-                        Image(systemName: "sparkles")
-                        Text(subscriptionStore.isProUnlocked ? String(localized: "会员中心") : String(localized: "升级解锁"))
+                        Image(systemName: "heart.fill")
+                        Text(subscriptionStore.isProUnlocked ? String(localized: "赞助中心") : String(localized: "赞助支持"))
                     }
                     .font(.caption.weight(.bold))
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.orange)
+                .tint(.red)
                 .controlSize(.regular)
             }
             .padding(14)

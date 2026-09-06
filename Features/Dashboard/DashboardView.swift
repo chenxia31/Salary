@@ -115,34 +115,34 @@ public struct DashboardView: View {
             isShowingPaywall = true
         } label: {
             HStack(spacing: 8) {
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .foregroundStyle(.orange)
+                Image(systemName: "heart.circle.fill")
+                    .foregroundStyle(.pink)
                     .font(.subheadline)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(String(localized: "30 天免费试用已结束"))
                         .font(.caption.weight(.bold))
                         .foregroundStyle(.primary)
-                    Text(String(localized: "仅需 ¥1.99 即可永久解锁全部功能"))
+                    Text(String(localized: "支持作者请喝杯水，即可永久激活全部功能"))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
 
                 Spacer()
 
-                Text(String(localized: "立即解锁"))
+                Text(String(localized: "赞助支持"))
                     .font(.caption2.weight(.bold))
                     .foregroundStyle(.white)
-                    .padding(.horizontal, 8)
+                    .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(Color.orange, in: Capsule())
+                    .background(.pink, in: Capsule())
             }
             .padding(10)
-            .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
-            .overlay {
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(Color.orange.opacity(0.3), lineWidth: 0.5)
-            }
+            .background(.pink.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.pink.opacity(0.3), lineWidth: 1)
+            )
         }
         .buttonStyle(.plain)
     }
