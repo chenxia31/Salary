@@ -80,6 +80,10 @@ public struct SalarySettings: Codable, Sendable, Equatable {
     public var statusColorTheme: String
     /// 自定义里程碑
     public var milestones: [MilestoneItem]
+    /// 微信支付收款码内容或赞赏链接
+    public var wechatPayQRContent: String
+    /// 支付宝收款码内容或支付链接
+    public var alipayPayQRContent: String
 
     public static let `default` = SalarySettings(
         monthlySalary: 25000.0,
@@ -105,7 +109,9 @@ public struct SalarySettings: Codable, Sendable, Equatable {
             MilestoneItem(title: "今日房租", targetAmount: 120.0, icon: "house.fill"),
             MilestoneItem(title: "下班奶茶", targetAmount: 200.0, icon: "mug.fill"),
             MilestoneItem(title: "日赚千元", targetAmount: 1000.0, icon: "sparkles")
-        ]
+        ],
+        wechatPayQRContent: "https://github.com/chenxia31/Salary#wechat-pay",
+        alipayPayQRContent: "https://qr.alipay.com/fkx13384rierygpezadhk2e"
     )
 
     public init(
@@ -126,7 +132,9 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         decimalPrecision: Int = 2,
         statusIcon: String = "banknote.fill",
         statusColorTheme: String = "dynamic",
-        milestones: [MilestoneItem] = SalarySettings.default.milestones
+        milestones: [MilestoneItem] = SalarySettings.default.milestones,
+        wechatPayQRContent: String = "https://github.com/chenxia31/Salary#wechat-pay",
+        alipayPayQRContent: String = "https://qr.alipay.com/fkx13384rierygpezadhk2e"
     ) {
         self.monthlySalary = monthlySalary
         self.workDaysPerMonth = workDaysPerMonth
@@ -146,6 +154,8 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         self.statusIcon = statusIcon
         self.statusColorTheme = statusColorTheme
         self.milestones = milestones
+        self.wechatPayQRContent = wechatPayQRContent
+        self.alipayPayQRContent = alipayPayQRContent
     }
 
     enum CodingKeys: String, CodingKey {
@@ -153,7 +163,7 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         case workEndHour, workEndMinute, lunchStartHour, lunchStartMinute
         case lunchEndHour, lunchEndMinute, isLunchPaid, isContinuous247Mode
         case currencySymbol, displayMode, decimalPrecision, statusIcon, statusColorTheme
-        case milestones
+        case milestones, wechatPayQRContent, alipayPayQRContent
     }
 
     public init(from decoder: Decoder) throws {
@@ -176,6 +186,8 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         self.statusIcon = try container.decodeIfPresent(String.self, forKey: .statusIcon) ?? "banknote.fill"
         self.statusColorTheme = try container.decodeIfPresent(String.self, forKey: .statusColorTheme) ?? "dynamic"
         self.milestones = try container.decodeIfPresent([MilestoneItem].self, forKey: .milestones) ?? SalarySettings.default.milestones
+        self.wechatPayQRContent = try container.decodeIfPresent(String.self, forKey: .wechatPayQRContent) ?? "https://github.com/chenxia31/Salary#wechat-pay"
+        self.alipayPayQRContent = try container.decodeIfPresent(String.self, forKey: .alipayPayQRContent) ?? "https://qr.alipay.com/fkx13384rierygpezadhk2e"
     }
 }
 

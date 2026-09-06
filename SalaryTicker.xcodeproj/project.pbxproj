@@ -12,6 +12,8 @@
 		3796E050E94A6938F4B62D24 /* StatusBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */; };
 		43FB59C9B159B7D4E45C88D6 /* libSalaryTickerCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */; };
 		47F4C2500A361DA8F6C728ED /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5382A12402C8B2B979197D /* PaywallView.swift */; };
+		6C2E8EE29C1B03C138748A0E /* alipay_qr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F3C73791E5CEBA567812F71 /* alipay_qr.jpg */; };
+		7529CB74F451EF08866FC450 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08C63DD89D11FA28D56FD /* QRCodeGenerator.swift */; };
 		79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */; };
 		81086AA8568DE9EE3E42090E /* SalaryTickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */; };
 		82E2B6DEAF299400C4BB63D3 /* SalaryEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */; };
@@ -63,7 +65,9 @@
 		1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarViewModel.swift; sourceTree = "<group>"; };
 		4351B788095C381266882362 /* StatsBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBreakdownView.swift; sourceTree = "<group>"; };
 		4394D53E58167B737ABD8E50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4F3C73791E5CEBA567812F71 /* alipay_qr.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alipay_qr.jpg; sourceTree = "<group>"; };
 		58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryEngineTests.swift; sourceTree = "<group>"; };
+		5DF08C63DD89D11FA28D56FD /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		7523D7741B24FB42E7ECC267 /* SubscriptionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStore.swift; sourceTree = "<group>"; };
 		7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSalaryTickerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5382A12402C8B2B979197D /* PaywallView.swift */,
+				5DF08C63DD89D11FA28D56FD /* QRCodeGenerator.swift */,
 			);
 			path = Paywall;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 		B6F8C70DE491EB2AF728305F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F3C73791E5CEBA567812F71 /* alipay_qr.jpg */,
 				11A19A4C7CBB03AE8B040A3B /* AppIcon.icns */,
 			);
 			path = Resources;
@@ -354,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF392B95C96C543A6C57312D /* AppIcon.icns in Resources */,
+				6C2E8EE29C1B03C138748A0E /* alipay_qr.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +425,7 @@
 				79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */,
 				D5167466FFE7155BCD7DA2EB /* MilestoneView.swift in Sources */,
 				47F4C2500A361DA8F6C728ED /* PaywallView.swift in Sources */,
+				7529CB74F451EF08866FC450 /* QRCodeGenerator.swift in Sources */,
 				924DB3B21AB820EF3736B880 /* SettingsView.swift in Sources */,
 				AE67326EDAA07A542693E444 /* StatsBreakdownView.swift in Sources */,
 				F2CCEBAA9E01DA4EDB934325 /* StatusBarLabelView.swift in Sources */,
