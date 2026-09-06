@@ -140,6 +140,27 @@ public struct SettingsView: View {
                 .font(.subheadline.weight(.semibold))
 
             VStack(alignment: .leading, spacing: 14) {
+                // 实时效果预览
+                HStack(spacing: 8) {
+                    Text(String(localized: "状态栏效果预览:"))
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(.secondary)
+
+                    HStack(spacing: 6) {
+                        previewIcon(for: settingsStore.settings.statusIcon, theme: settingsStore.settings.statusColorTheme)
+                        Text("¥ 128.45")
+                            .font(.system(size: 12, weight: .medium, design: .rounded))
+                            .monospacedDigit()
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(.quaternary, in: RoundedRectangle(cornerRadius: 6))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 6)
+                            .strokeBorder(Color.white.opacity(0.1), lineWidth: 0.5)
+                    }
+                }
+
                 // 显示模式
                 Picker(String(localized: "显示模式"), selection: $settingsStore.settings.displayMode) {
                     ForEach(StatusDisplayMode.allCases, id: \.self) { mode in
@@ -147,10 +168,13 @@ public struct SettingsView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .onChange(of: settingsStore.settings.displayMode) { _, _ in
+                    settingsStore.save()
+                }
 
                 // 菜单栏图标更换
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(String(localized: "状态栏图标"))
+                    Text(String(localized: "状态栏图标 (点击即生效)"))
                         .font(.caption.weight(.medium))
                         .foregroundStyle(.secondary)
 
@@ -159,11 +183,11 @@ public struct SettingsView: View {
                             let isSelected = settingsStore.settings.statusIcon == item.id
                             Button {
                                 settingsStore.settings.statusIcon = item.id
+                                settingsStore.save()
                             } label: {
                                 VStack(spacing: 4) {
-                                    Image(systemName: item.id)
-                                        .font(.system(size: 16))
-                                        .foregroundStyle(isSelected ? Color.accentColor : Color.secondary)
+                                    previewIcon(for: item.id, theme: isSelected ? settingsStore.settings.statusColorTheme : "monochrome")
+                                        .frame(height: 18)
                                     Text(item.name)
                                         .font(.system(size: 10))
                                         .foregroundStyle(isSelected ? Color.primary : Color.secondary)
@@ -183,7 +207,7 @@ public struct SettingsView: View {
 
                 // 菜单栏色彩主题更换
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(String(localized: "色彩主题"))
+                    Text(String(localized: "色彩主题 (点击即生效)"))
                         .font(.caption.weight(.medium))
                         .foregroundStyle(.secondary)
 
@@ -192,6 +216,7 @@ public struct SettingsView: View {
                             let isSelected = settingsStore.settings.statusColorTheme == theme.id
                             Button {
                                 settingsStore.settings.statusColorTheme = theme.id
+                                settingsStore.save()
                             } label: {
                                 HStack(spacing: 5) {
                                     Circle()
@@ -222,6 +247,9 @@ public struct SettingsView: View {
                         Text("4 位小数 (¥ 128.4520)").tag(4)
                     }
                     .frame(width: 180)
+                    .onChange(of: settingsStore.settings.decimalPrecision) { _, _ in
+                        settingsStore.save()
+                    }
                 }
             }
             .padding(14)
@@ -245,6 +273,7 @@ public struct SettingsView: View {
                         icon: "gift.fill"
                     )
                     settingsStore.settings.milestones.append(newItem)
+                    settingsStore.save()
                 } label: {
                     HStack(spacing: 3) {
                         Image(systemName: "plus.circle.fill")
@@ -256,6 +285,7 @@ public struct SettingsView: View {
 
                 Button {
                     settingsStore.settings.milestones = SalarySettings.default.milestones
+                    settingsStore.save()
                 } label: {
                     Text(String(localized: "重置"))
                         .font(.caption2)
@@ -275,6 +305,9 @@ public struct SettingsView: View {
                         TextField(String(localized: "目标名称"), text: $item.title)
                             .textFieldStyle(.roundedBorder)
                             .frame(maxWidth: .infinity)
+                            .onChange(of: item.title) { _, _ in
+                                settingsStore.save()
+                            }
 
                         Text(settingsStore.settings.currencySymbol)
                             .foregroundStyle(.secondary)
@@ -283,10 +316,14 @@ public struct SettingsView: View {
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 80)
                             .multilineTextAlignment(.trailing)
+                            .onChange(of: item.targetAmount) { _, _ in
+                                settingsStore.save()
+                            }
 
                         if settingsStore.settings.milestones.count > 1 {
                             Button {
                                 settingsStore.settings.milestones.removeAll { $0.id == item.id }
+                                settingsStore.save()
                             } label: {
                                 Image(systemName: "minus.circle.fill")
                                     .foregroundStyle(.red.opacity(0.8))
@@ -494,6 +531,44 @@ public struct SettingsView: View {
             }
             .frame(width: 54)
             .labelsHidden()
+        }
+    }
+
+    // 渲染带有颜色和模板设置的图标预览
+    private func previewIcon(for iconName: String, theme: String) -> some View {
+        let nsColor: NSColor
+        switch theme {
+        case "emerald":
+            nsColor = .systemMint
+        case "gold":
+            nsColor = .systemYellow
+        case "skyBlue":
+            nsColor = .systemCyan
+        case "coral":
+            nsColor = .systemOrange
+        case "purple":
+            nsColor = .systemPurple
+        case "monochrome":
+            nsColor = .labelColor
+        default:
+            nsColor = .systemGreen
+        }
+
+        let base = NSImage(systemSymbolName: iconName, accessibilityDescription: nil) ?? NSImage()
+        if theme == "monochrome" {
+            let config = NSImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+            let img = base.withSymbolConfiguration(config) ?? base
+            img.isTemplate = true
+            return Image(nsImage: img)
+        } else {
+            let config = NSImage.SymbolConfiguration(paletteColors: [nsColor])
+                .applying(.init(pointSize: 13, weight: .semibold))
+            if let tinted = base.withSymbolConfiguration(config) {
+                tinted.isTemplate = false
+                return Image(nsImage: tinted)
+            }
+            base.isTemplate = false
+            return Image(nsImage: base)
         }
     }
 }

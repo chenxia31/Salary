@@ -3,17 +3,17 @@ import SalaryTickerCore
 
 public struct StatusBarLabelView: View {
     @Bindable var viewModel: StatusBarViewModel
+    @Bindable var settingsStore: SalarySettingsStore
 
     public init(viewModel: StatusBarViewModel) {
         self.viewModel = viewModel
+        self.settingsStore = viewModel.settingsStore
     }
 
     public var body: some View {
         HStack(spacing: 5) {
-            // 自定义状态图标与自选色彩
-            Image(systemName: viewModel.currentSettings.statusIcon)
-                .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(viewModel.resolvedColor)
+            // 使用适配 macOS MenuBar 的原生 NSImage 渲染图标与颜色
+            Image(nsImage: viewModel.statusIconNSImage)
 
             if !viewModel.statusText.isEmpty {
                 Text(viewModel.statusText)

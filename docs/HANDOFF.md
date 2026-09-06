@@ -51,11 +51,13 @@
 
 ## 六、踩过的坑 / 别再试的路
 
-- SwiftUI 中 `foregroundStyle` 在三元运算符中混合使用 `Color` 和 `HierarchicalShapeStyle`（如 `.primary` 与 `.orange`）会导致编译器泛型类型推断失败，需显式指定 `Color.primary` 与 `Color.orange`。
-- Swift 6 中跨 Actor 访问类型常量（如 `Self.productId`）在 `Task.detached` 中需将常量声明为 `nonisolated static let`。
+- 状态栏必须使用 `.monospacedDigit()`，否则每秒数字变化时宽度微颤会影响视觉体验。
+- Swift 6 中 `@MainActor` 类的 `deinit` 必须配合 `@ObservationIgnored` 与 `nonisolated(unsafe)` 管理后台 `Task`，否则触发严格并发编译报错。
+- Xcode 中如果不显式配置 `SUPPORTED_PLATFORMS = macosx` 与共享 Scheme，Xcode 会误按上一个 iOS 项目的 iOS 模拟器/设备进行编译，导致报 `'Logger' is only available in iOS 14.0` / `'Observable()' is only available in iOS 17.0`。已在 `project.yml` 中锁定 `SUPPORTED_PLATFORMS: macosx` 与 `SalaryTicker.xcscheme`。
+- macOS 状态栏 AppKit 默认会将 MenuBar 里的 SwiftUI `Image` 作为 Template 强制黑白渲染，且不会响应 `.foregroundStyle` 颜色；必须通过原生 `NSImage(systemSymbolName:)` 配合 `SymbolConfiguration(paletteColors:)` 并显式声明 `isTemplate = false`，状态栏图标才能呈现彩色；同时 `StatusBarLabelView` 需直接绑定 `SalarySettingsStore` 并在点击后立即保存，以确保在设置面板点选图标与颜色时状态栏能够即时无缝刷新。
 
 ## 七、环境与验证
 
 - 自动化检查：`./scripts/preflight.sh`（全绿）
-- 单元测试：`swift test`（12 项测试 0.009s 全绿）
+- 单元测试：`swift test`（12 项测试 0.010s 全绿）
 - Xcode 工程：`SalaryTicker.xcodeproj`（编译运行正常，仅目标设备锁定 My Mac）

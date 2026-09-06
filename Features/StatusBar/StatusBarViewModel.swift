@@ -136,4 +136,52 @@ public final class StatusBarViewModel {
             return statusDotColor
         }
     }
+
+    /// 生成适配 macOS 状态栏彩色渲染的原生 NSImage
+    public var statusIconNSImage: NSImage {
+        let iconName = currentSettings.statusIcon
+        let theme = currentSettings.statusColorTheme
+        let baseImage = NSImage(systemSymbolName: iconName, accessibilityDescription: nil) ?? NSImage()
+
+        if theme == "monochrome" {
+            let config = NSImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
+            let img = baseImage.withSymbolConfiguration(config) ?? baseImage
+            img.isTemplate = true
+            return img
+        } else {
+            let nsColor: NSColor
+            switch theme {
+            case "emerald":
+                nsColor = .systemMint
+            case "gold":
+                nsColor = .systemYellow
+            case "skyBlue":
+                nsColor = .systemCyan
+            case "coral":
+                nsColor = .systemOrange
+            case "purple":
+                nsColor = .systemPurple
+            default: // "dynamic"
+                switch workStatus {
+                case .working, .continuous:
+                    nsColor = .systemGreen
+                case .lunchBreak:
+                    nsColor = .systemOrange
+                case .beforeWork:
+                    nsColor = .systemBlue
+                case .afterWork:
+                    nsColor = .systemGray
+                }
+            }
+
+            let config = NSImage.SymbolConfiguration(paletteColors: [nsColor])
+                .applying(.init(pointSize: 12, weight: .semibold))
+            if let tinted = baseImage.withSymbolConfiguration(config) {
+                tinted.isTemplate = false
+                return tinted
+            }
+            baseImage.isTemplate = false
+            return baseImage
+        }
+    }
 }

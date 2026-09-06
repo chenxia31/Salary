@@ -147,6 +147,36 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         self.statusColorTheme = statusColorTheme
         self.milestones = milestones
     }
+
+    enum CodingKeys: String, CodingKey {
+        case monthlySalary, workDaysPerMonth, workStartHour, workStartMinute
+        case workEndHour, workEndMinute, lunchStartHour, lunchStartMinute
+        case lunchEndHour, lunchEndMinute, isLunchPaid, isContinuous247Mode
+        case currencySymbol, displayMode, decimalPrecision, statusIcon, statusColorTheme
+        case milestones
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.monthlySalary = try container.decodeIfPresent(Double.self, forKey: .monthlySalary) ?? 25000.0
+        self.workDaysPerMonth = try container.decodeIfPresent(Double.self, forKey: .workDaysPerMonth) ?? 21.75
+        self.workStartHour = try container.decodeIfPresent(Int.self, forKey: .workStartHour) ?? 9
+        self.workStartMinute = try container.decodeIfPresent(Int.self, forKey: .workStartMinute) ?? 30
+        self.workEndHour = try container.decodeIfPresent(Int.self, forKey: .workEndHour) ?? 18
+        self.workEndMinute = try container.decodeIfPresent(Int.self, forKey: .workEndMinute) ?? 30
+        self.lunchStartHour = try container.decodeIfPresent(Int.self, forKey: .lunchStartHour) ?? 12
+        self.lunchStartMinute = try container.decodeIfPresent(Int.self, forKey: .lunchStartMinute) ?? 0
+        self.lunchEndHour = try container.decodeIfPresent(Int.self, forKey: .lunchEndHour) ?? 13
+        self.lunchEndMinute = try container.decodeIfPresent(Int.self, forKey: .lunchEndMinute) ?? 30
+        self.isLunchPaid = try container.decodeIfPresent(Bool.self, forKey: .isLunchPaid) ?? false
+        self.isContinuous247Mode = try container.decodeIfPresent(Bool.self, forKey: .isContinuous247Mode) ?? false
+        self.currencySymbol = try container.decodeIfPresent(String.self, forKey: .currencySymbol) ?? "¥"
+        self.displayMode = try container.decodeIfPresent(StatusDisplayMode.self, forKey: .displayMode) ?? .todayEarned
+        self.decimalPrecision = try container.decodeIfPresent(Int.self, forKey: .decimalPrecision) ?? 2
+        self.statusIcon = try container.decodeIfPresent(String.self, forKey: .statusIcon) ?? "banknote.fill"
+        self.statusColorTheme = try container.decodeIfPresent(String.self, forKey: .statusColorTheme) ?? "dynamic"
+        self.milestones = try container.decodeIfPresent([MilestoneItem].self, forKey: .milestones) ?? SalarySettings.default.milestones
+    }
 }
 
 /// 薪资配置存储管理器
