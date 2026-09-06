@@ -7,6 +7,10 @@ settings:
   base:
     SWIFT_VERSION: "6.0"
     MACOSX_DEPLOYMENT_TARGET: "14.0"
+    SDKROOT: macosx
+    SUPPORTED_PLATFORMS: macosx
+    SUPPORTS_MACCATALYST: NO
+    SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
     CODE_SIGN_IDENTITY: "-"
 
 targets:
@@ -20,6 +24,9 @@ targets:
       base:
         PRODUCT_NAME: SalaryTickerCore
         DEFINES_MODULE: YES
+        SDKROOT: macosx
+        SUPPORTED_PLATFORMS: macosx
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
 
   SalaryTickerFeatures:
     type: library.static
@@ -33,6 +40,9 @@ targets:
       base:
         PRODUCT_NAME: SalaryTickerFeatures
         DEFINES_MODULE: YES
+        SDKROOT: macosx
+        SUPPORTED_PLATFORMS: macosx
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
 
   SalaryTicker:
     type: application
@@ -49,12 +59,33 @@ targets:
         PRODUCT_NAME: SalaryTicker
         INFOPLIST_KEY_LSUIElement: YES
         GENERATE_INFOPLIST_FILE: YES
+        SDKROOT: macosx
+        SUPPORTED_PLATFORMS: macosx
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
         CODE_SIGN_IDENTITY: "-"
 
   SalaryTickerTests:
     type: bundle.unit-test
     platform: macOS
+    deploymentTarget: "14.0"
     sources:
       - path: Tests
     dependencies:
       - target: SalaryTickerCore
+    settings:
+      base:
+        SDKROOT: macosx
+        SUPPORTED_PLATFORMS: macosx
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+schemes:
+  SalaryTicker:
+    build:
+      targets:
+        SalaryTicker: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - SalaryTickerTests

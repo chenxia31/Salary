@@ -52,10 +52,10 @@
 
 - 状态栏必须使用 `.monospacedDigit()`，否则每秒数字变化时宽度微颤会影响视觉体验。
 - Swift 6 中 `@MainActor` 类的 `deinit` 必须配合 `@ObservationIgnored` 与 `nonisolated(unsafe)` 管理后台 `Task`，否则触发严格并发编译报错。
-- `project.yml` 中内部模块使用 `library.static`，避免嵌入 framework 引起的 ad-hoc 代码签名失败。
+- Xcode 中如果不显式配置 `SUPPORTED_PLATFORMS = macosx` 与共享 Scheme，Xcode 会误按上一个 iOS 项目的 iOS 模拟器/设备进行编译，导致报 `'Logger' is only available in iOS 14.0` / `'Observable()' is only available in iOS 17.0`。已在 `project.yml` 中锁定 `SUPPORTED_PLATFORMS: macosx` 与 `SalaryTicker.xcscheme`。
 
 ## 七、环境与验证
 
 - 自动化检查：`./scripts/preflight.sh`（全绿）
-- 编译与单测：`swift test`（10 tests passed in 0.008s）
-- Xcode 工程：`SalaryTicker.xcodeproj`（Build Succeeded）
+- 编译与单测：`swift test`（10 tests passed in 0.006s）
+- Xcode 工程：`SalaryTicker.xcodeproj`（Build Succeeded，仅支持 My Mac 运行）
