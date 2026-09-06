@@ -1,0 +1,60 @@
+name: SalaryTicker
+options:
+  bundleIdPrefix: com.openclaw
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    CODE_SIGN_IDENTITY: "-"
+
+targets:
+  SalaryTickerCore:
+    type: library.static
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Core
+    settings:
+      base:
+        PRODUCT_NAME: SalaryTickerCore
+        DEFINES_MODULE: YES
+
+  SalaryTickerFeatures:
+    type: library.static
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Features
+    dependencies:
+      - target: SalaryTickerCore
+    settings:
+      base:
+        PRODUCT_NAME: SalaryTickerFeatures
+        DEFINES_MODULE: YES
+
+  SalaryTicker:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: App
+    dependencies:
+      - target: SalaryTickerCore
+      - target: SalaryTickerFeatures
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.openclaw.salaryticker
+        PRODUCT_NAME: SalaryTicker
+        INFOPLIST_KEY_LSUIElement: YES
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_IDENTITY: "-"
+
+  SalaryTickerTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: SalaryTickerCore

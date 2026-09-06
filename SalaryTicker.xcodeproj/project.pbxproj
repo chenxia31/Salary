@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A02250D96997CBAEC324148 /* SalarySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91678DCAE821DDDAF8D90B /* SalarySettings.swift */; };
+		3796E050E94A6938F4B62D24 /* StatusBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */; };
+		43FB59C9B159B7D4E45C88D6 /* libSalaryTickerCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */; };
+		79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */; };
+		81086AA8568DE9EE3E42090E /* SalaryTickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */; };
+		82E2B6DEAF299400C4BB63D3 /* SalaryEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */; };
+		8F81DB77061B89E00F2D7367 /* SalaryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E9C9C0F364A9012AFCCDD4 /* SalaryEngine.swift */; };
+		924DB3B21AB820EF3736B880 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394D53E58167B737ABD8E50 /* SettingsView.swift */; };
+		AE67326EDAA07A542693E444 /* StatsBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351B788095C381266882362 /* StatsBreakdownView.swift */; };
+		D5167466FFE7155BCD7DA2EB /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AA12156CA981B7E9FC442C /* MilestoneView.swift */; };
+		DAE1D193E45607BCE962830B /* libSalaryTickerFeatures.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F46229A5B9023693E2CEAF /* libSalaryTickerFeatures.a */; };
+		E13F7C346EF236C204FB147B /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5779EFB7DBC8301D314EAE /* AppLogger.swift */; };
+		E6D7EE7F8FE59A2353CAFF29 /* libSalaryTickerCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */; };
+		F2CCEBAA9E01DA4EDB934325 /* StatusBarLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E13B1BEB906FD1767EB0B8 /* StatusBarLabelView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B13CB0ADFABC142ABFBA374C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522AF63B6B34164D2F843A71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 014BC2CBE7C4AE079DEE2C72;
+			remoteInfo = SalaryTickerCore;
+		};
+		C0E514AF7EC6F7BABAD291AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522AF63B6B34164D2F843A71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 014BC2CBE7C4AE079DEE2C72;
+			remoteInfo = SalaryTickerCore;
+		};
+		CEFCD5C72F90B04EA428D657 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522AF63B6B34164D2F843A71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 014BC2CBE7C4AE079DEE2C72;
+			remoteInfo = SalaryTickerCore;
+		};
+		F5DE67466A64581BF1BB5B3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 522AF63B6B34164D2F843A71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34C748263338F173E1E0F5FF;
+			remoteInfo = SalaryTickerFeatures;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarViewModel.swift; sourceTree = "<group>"; };
+		4351B788095C381266882362 /* StatsBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBreakdownView.swift; sourceTree = "<group>"; };
+		4394D53E58167B737ABD8E50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryEngineTests.swift; sourceTree = "<group>"; };
+		629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSalaryTickerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		79E13B1BEB906FD1767EB0B8 /* StatusBarLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarLabelView.swift; sourceTree = "<group>"; };
+		89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryTickerApp.swift; sourceTree = "<group>"; };
+		A0F46229A5B9023693E2CEAF /* libSalaryTickerFeatures.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSalaryTickerFeatures.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E9C9C0F364A9012AFCCDD4 /* SalaryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryEngine.swift; sourceTree = "<group>"; };
+		A7C567E514E86BF17C6D5EE4 /* SalaryTicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalaryTicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5779EFB7DBC8301D314EAE /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		CC91678DCAE821DDDAF8D90B /* SalarySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalarySettings.swift; sourceTree = "<group>"; };
+		E0AA12156CA981B7E9FC442C /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
+		F0416ED61FDFFB3106170C10 /* SalaryTickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalaryTickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		724D449722DE1AFE2303CA2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43FB59C9B159B7D4E45C88D6 /* libSalaryTickerCore.a in Frameworks */,
+				DAE1D193E45607BCE962830B /* libSalaryTickerFeatures.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9AEB6FE4F67C26E81659C5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D7EE7F8FE59A2353CAFF29 /* libSalaryTickerCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F6C1EE2166331846E00CF29 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2F6DC638B297CD315566E625 /* SalaryTickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */,
+			);
+			path = SalaryTickerTests;
+			sourceTree = "<group>";
+		};
+		3792DFEC4280D26D97D1C020 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				BF5779EFB7DBC8301D314EAE /* AppLogger.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		3EE97DC28B1516CDBAA6AAF2 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				A6E9C9C0F364A9012AFCCDD4 /* SalaryEngine.swift */,
+			);
+			path = Calculation;
+			sourceTree = "<group>";
+		};
+		5501F51C8038ABAB8A41C6FF /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CC91678DCAE821DDDAF8D90B /* SalarySettings.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		6F7012BF070EA7DB8E1A2948 /* StatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				79E13B1BEB906FD1767EB0B8 /* StatusBarLabelView.swift */,
+				1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */,
+			);
+			path = StatusBar;
+			sourceTree = "<group>";
+		};
+		7D0BF3C673A420E6C91AD418 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A5C63E85129ABA575EC457EA /* Dashboard */,
+				924FA3F30134CD374BAC6AFA /* Settings */,
+				6F7012BF070EA7DB8E1A2948 /* StatusBar */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		82B4E4082C42C4115DBA18BE = {
+			isa = PBXGroup;
+			children = (
+				2F6C1EE2166331846E00CF29 /* App */,
+				EF7909B513DCC2F40195D673 /* Core */,
+				7D0BF3C673A420E6C91AD418 /* Features */,
+				BCF123A5B03CDC502A54F693 /* Tests */,
+				D1CCDC994C2B1D8641F931F3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		924FA3F30134CD374BAC6AFA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4394D53E58167B737ABD8E50 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A5C63E85129ABA575EC457EA /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */,
+				E0AA12156CA981B7E9FC442C /* MilestoneView.swift */,
+				4351B788095C381266882362 /* StatsBreakdownView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		BCF123A5B03CDC502A54F693 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2F6DC638B297CD315566E625 /* SalaryTickerTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D1CCDC994C2B1D8641F931F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */,
+				A0F46229A5B9023693E2CEAF /* libSalaryTickerFeatures.a */,
+				A7C567E514E86BF17C6D5EE4 /* SalaryTicker.app */,
+				F0416ED61FDFFB3106170C10 /* SalaryTickerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF7909B513DCC2F40195D673 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3EE97DC28B1516CDBAA6AAF2 /* Calculation */,
+				3792DFEC4280D26D97D1C020 /* Logging */,
+				5501F51C8038ABAB8A41C6FF /* Storage */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		014BC2CBE7C4AE079DEE2C72 /* SalaryTickerCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C6B863D004AFEA5E264480E /* Build configuration list for PBXNativeTarget "SalaryTickerCore" */;
+			buildPhases = (
+				FA484E654CC29CA85ECB3C5F /* Sources */,
+				AE497E774FD99B65C649AFB2 /* Copy Swift Objective-C Interface Header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SalaryTickerCore;
+			packageProductDependencies = (
+			);
+			productName = SalaryTickerCore;
+			productReference = 7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		34C748263338F173E1E0F5FF /* SalaryTickerFeatures */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80DD8C37819F9C39C42A31D6 /* Build configuration list for PBXNativeTarget "SalaryTickerFeatures" */;
+			buildPhases = (
+				9EF21B9060D3CC33F295782B /* Sources */,
+				9D9DFB8F88037F65C56DBE0B /* Copy Swift Objective-C Interface Header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A64F826BB66818C50CE39687 /* PBXTargetDependency */,
+			);
+			name = SalaryTickerFeatures;
+			packageProductDependencies = (
+			);
+			productName = SalaryTickerFeatures;
+			productReference = A0F46229A5B9023693E2CEAF /* libSalaryTickerFeatures.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		77310371FF23432B1C205BA2 /* SalaryTickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7E4F1101FECE6DC305391AA /* Build configuration list for PBXNativeTarget "SalaryTickerTests" */;
+			buildPhases = (
+				8DD67B8357690A1821E7713D /* Sources */,
+				B9AEB6FE4F67C26E81659C5A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				834DFE558D7B230D4F781EF4 /* PBXTargetDependency */,
+			);
+			name = SalaryTickerTests;
+			packageProductDependencies = (
+			);
+			productName = SalaryTickerTests;
+			productReference = F0416ED61FDFFB3106170C10 /* SalaryTickerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B9A749DE7D84ACE8DF2B93C2 /* SalaryTicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C0FC1F3218EF1B40C5DE805 /* Build configuration list for PBXNativeTarget "SalaryTicker" */;
+			buildPhases = (
+				26FD58DABDA1B3402D2A21D3 /* Sources */,
+				724D449722DE1AFE2303CA2F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				993055D2B0D833162E5A5426 /* PBXTargetDependency */,
+				532544741AD1D324ACAD03F0 /* PBXTargetDependency */,
+			);
+			name = SalaryTicker;
+			packageProductDependencies = (
+			);
+			productName = SalaryTicker;
+			productReference = A7C567E514E86BF17C6D5EE4 /* SalaryTicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		522AF63B6B34164D2F843A71 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 018AB7AC28D5101745D2968C /* Build configuration list for PBXProject "SalaryTicker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 82B4E4082C42C4115DBA18BE;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D1CCDC994C2B1D8641F931F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				014BC2CBE7C4AE079DEE2C72 /* SalaryTickerCore */,
+				34C748263338F173E1E0F5FF /* SalaryTickerFeatures */,
+				B9A749DE7D84ACE8DF2B93C2 /* SalaryTicker */,
+				77310371FF23432B1C205BA2 /* SalaryTickerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D9DFB8F88037F65C56DBE0B /* Copy Swift Objective-C Interface Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(DERIVED_SOURCES_DIR)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			name = "Copy Swift Objective-C Interface Header";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/include/$(PRODUCT_MODULE_NAME)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+		};
+		AE497E774FD99B65C649AFB2 /* Copy Swift Objective-C Interface Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(DERIVED_SOURCES_DIR)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			name = "Copy Swift Objective-C Interface Header";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/include/$(PRODUCT_MODULE_NAME)/$(SWIFT_OBJC_INTERFACE_HEADER_NAME)",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26FD58DABDA1B3402D2A21D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81086AA8568DE9EE3E42090E /* SalaryTickerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD67B8357690A1821E7713D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E2B6DEAF299400C4BB63D3 /* SalaryEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EF21B9060D3CC33F295782B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */,
+				D5167466FFE7155BCD7DA2EB /* MilestoneView.swift in Sources */,
+				924DB3B21AB820EF3736B880 /* SettingsView.swift in Sources */,
+				AE67326EDAA07A542693E444 /* StatsBreakdownView.swift in Sources */,
+				F2CCEBAA9E01DA4EDB934325 /* StatusBarLabelView.swift in Sources */,
+				3796E050E94A6938F4B62D24 /* StatusBarViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA484E654CC29CA85ECB3C5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E13F7C346EF236C204FB147B /* AppLogger.swift in Sources */,
+				8F81DB77061B89E00F2D7367 /* SalaryEngine.swift in Sources */,
+				1A02250D96997CBAEC324148 /* SalarySettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		532544741AD1D324ACAD03F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34C748263338F173E1E0F5FF /* SalaryTickerFeatures */;
+			targetProxy = F5DE67466A64581BF1BB5B3A /* PBXContainerItemProxy */;
+		};
+		834DFE558D7B230D4F781EF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 014BC2CBE7C4AE079DEE2C72 /* SalaryTickerCore */;
+			targetProxy = CEFCD5C72F90B04EA428D657 /* PBXContainerItemProxy */;
+		};
+		993055D2B0D833162E5A5426 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 014BC2CBE7C4AE079DEE2C72 /* SalaryTickerCore */;
+			targetProxy = B13CB0ADFABC142ABFBA374C /* PBXContainerItemProxy */;
+		};
+		A64F826BB66818C50CE39687 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 014BC2CBE7C4AE079DEE2C72 /* SalaryTickerCore */;
+			targetProxy = C0E514AF7EC6F7BABAD291AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		16547CF87056BB23750DA1C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.SalaryTickerTests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2EBAF83EAE05DA556E9F18DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.SalaryTickerFeatures;
+				PRODUCT_NAME = SalaryTickerFeatures;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		59939C17C8FA24D9EA8E3825 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.SalaryTickerFeatures;
+				PRODUCT_NAME = SalaryTickerFeatures;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5F7B328822976C4EDD2508F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		82736619DD025A851DB39671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.SalaryTickerCore;
+				PRODUCT_NAME = SalaryTickerCore;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8547BDDF455E3C22E3DEF453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.SalaryTickerTests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A31DD51CE1E3C4C2C7FAB61C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.salaryticker;
+				PRODUCT_NAME = SalaryTicker;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A9E106FDEE3C0F593FDE5A5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.salaryticker;
+				PRODUCT_NAME = SalaryTicker;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C7523186BE6B47B7E15BA33A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		F82B6C4493C912291EB88354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openclaw.SalaryTickerCore;
+				PRODUCT_NAME = SalaryTickerCore;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		018AB7AC28D5101745D2968C /* Build configuration list for PBXProject "SalaryTicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7523186BE6B47B7E15BA33A /* Debug */,
+				5F7B328822976C4EDD2508F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1C6B863D004AFEA5E264480E /* Build configuration list for PBXNativeTarget "SalaryTickerCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F82B6C4493C912291EB88354 /* Debug */,
+				82736619DD025A851DB39671 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5C0FC1F3218EF1B40C5DE805 /* Build configuration list for PBXNativeTarget "SalaryTicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9E106FDEE3C0F593FDE5A5A /* Debug */,
+				A31DD51CE1E3C4C2C7FAB61C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		80DD8C37819F9C39C42A31D6 /* Build configuration list for PBXNativeTarget "SalaryTickerFeatures" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EBAF83EAE05DA556E9F18DB /* Debug */,
+				59939C17C8FA24D9EA8E3825 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B7E4F1101FECE6DC305391AA /* Build configuration list for PBXNativeTarget "SalaryTickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8547BDDF455E3C22E3DEF453 /* Debug */,
+				16547CF87056BB23750DA1C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 522AF63B6B34164D2F843A71 /* Project object */;
+}

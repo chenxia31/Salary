@@ -1,0 +1,45 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved.backup
+
+# 密钥与凭证 —— 绝不可提交
+*.p12
+*.p8
+*.mobileprovision
+*.cer
+*.certSigningRequest
+.env
+.env.*
+secrets.json
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# AI 工具本地状态
+.claude/settings.local.json
+.gemini/
+.aider*
+
+# 临时
+*.log
+tmp/
+*.profraw
