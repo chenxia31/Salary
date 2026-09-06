@@ -156,4 +156,46 @@ struct SalaryEngineTests {
         let countdown = SalaryEngine.formatRemainingCountdown(3665)
         #expect(countdown.contains("1小时1分5秒"))
     }
+
+    @Test("自定义生活打工小目标")
+    func testCustomMilestones() {
+        var settings = sampleSettings
+        let coffee = MilestoneItem(title: "特调冰美式", targetAmount: 32.0, icon: "cup.and.saucer.fill")
+        settings.milestones.append(coffee)
+
+        #expect(settings.milestones.contains(where: { $0.title == "特调冰美式" && $0.targetAmount == 32.0 }))
+
+        // 状态栏图标与色彩主题配置验证
+        settings.statusIcon = "dollarsign.circle.fill"
+        settings.statusColorTheme = "gold"
+        #expect(settings.statusIcon == "dollarsign.circle.fill")
+        #expect(settings.statusColorTheme == "gold")
+    }
+
+    @Test("30天免费试用与订阅激活逻辑")
+    @MainActor
+    func testSubscriptionStore() {
+        let store = SubscriptionStore.shared
+
+        // 重置试用
+        store.resetTrial()
+        #expect(store.daysRemaining >= 29)
+        #expect(store.isTrialActive == true)
+        #expect(store.isFeatureUnlocked == true)
+
+        // 模拟试用过期
+        store.simulateTrialExpired()
+        #expect(store.isTrialActive == false)
+        #expect(store.daysRemaining == 0)
+        #expect(store.isFeatureUnlocked == false)
+
+        // 购买激活 PRO
+        store.unlockProDirectly()
+        #expect(store.isProUnlocked == true)
+        #expect(store.isFeatureUnlocked == true)
+        #expect(store.statusBadgeText == "PRO 会员")
+
+        // 恢复正常试用状态
+        store.resetTrial()
+    }
 }

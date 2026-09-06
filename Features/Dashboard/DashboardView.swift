@@ -4,8 +4,7 @@ import SalaryTickerCore
 public struct DashboardView: View {
     @Bindable var viewModel: StatusBarViewModel
     @State private var isShowingSettings: Bool = false
-    @State private var isShowingQuickSalaryAlert: Bool = false
-    @State private var quickSalaryInput: String = ""
+    @State private var isShowingPaywall: Bool = false
 
     public init(viewModel: StatusBarViewModel) {
         self.viewModel = viewModel
@@ -15,6 +14,11 @@ public struct DashboardView: View {
         VStack(spacing: 16) {
             // 顶部栏：品牌与快捷按钮
             headerBar
+
+            // 试用到期警告栏
+            if !viewModel.subscriptionStore.isFeatureUnlocked {
+                expiredAlertBanner
+            }
 
             // 核心 Hero 卡片：今日大字入账看板
             heroEarningsCard
@@ -30,11 +34,14 @@ public struct DashboardView: View {
             // 工时进度与下班倒计时卡片
             workProgressCard
 
-            // 打工人小成就
+            // 打工人小成就 / 生活目标
             MilestoneView(
                 milestones: viewModel.currentSettings.milestones,
                 todayEarnings: viewModel.todayEarnings,
-                currencySymbol: viewModel.currentSettings.currencySymbol
+                currencySymbol: viewModel.currentSettings.currencySymbol,
+                onEditTap: {
+                    isShowingSettings = true
+                }
             )
 
             // 月度宏观进度
@@ -48,6 +55,9 @@ public struct DashboardView: View {
         .background(.ultraThinMaterial)
         .sheet(isPresented: $isShowingSettings) {
             SettingsView(settingsStore: viewModel.settingsStore)
+        }
+        .sheet(isPresented: $isShowingPaywall) {
+            PaywallView(subscriptionStore: viewModel.subscriptionStore)
         }
     }
 
@@ -67,6 +77,25 @@ public struct DashboardView: View {
 
             Spacer()
 
+            // 会员/试用期标识按钮
+            Button {
+                isShowingPaywall = true
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: viewModel.subscriptionStore.isProUnlocked ? "crown.fill" : "sparkles")
+                        .font(.caption2)
+                        .foregroundStyle(viewModel.subscriptionStore.isProUnlocked ? .yellow : .orange)
+                    Text(viewModel.subscriptionStore.statusBadgeText)
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(viewModel.subscriptionStore.isProUnlocked ? Color.primary : Color.orange)
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 3)
+                .background(.quaternary.opacity(0.8), in: Capsule())
+            }
+            .buttonStyle(.plain)
+            .help(String(localized: "查看会员特权与订阅状态"))
+
             // 偏好设置按钮
             Button {
                 isShowingSettings = true
@@ -78,6 +107,44 @@ public struct DashboardView: View {
             .buttonStyle(.plain)
             .help(String(localized: "偏好设置"))
         }
+    }
+
+    // MARK: - 试用到期横幅
+    private var expiredAlertBanner: some View {
+        Button {
+            isShowingPaywall = true
+        } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(.orange)
+                    .font(.subheadline)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(String(localized: "30 天免费试用已结束"))
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.primary)
+                    Text(String(localized: "仅需 ¥1.99 即可永久解锁全部功能"))
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                Text(String(localized: "立即解锁"))
+                    .font(.caption2.weight(.bold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.orange, in: Capsule())
+            }
+            .padding(10)
+            .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
+            .overlay {
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(Color.orange.opacity(0.3), lineWidth: 0.5)
+            }
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - 核心大字动态看板

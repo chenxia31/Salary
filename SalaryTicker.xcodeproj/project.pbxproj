@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1A02250D96997CBAEC324148 /* SalarySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91678DCAE821DDDAF8D90B /* SalarySettings.swift */; };
+		2761D0C805F60F71D2760803 /* SubscriptionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523D7741B24FB42E7ECC267 /* SubscriptionStore.swift */; };
 		3796E050E94A6938F4B62D24 /* StatusBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */; };
 		43FB59C9B159B7D4E45C88D6 /* libSalaryTickerCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */; };
+		47F4C2500A361DA8F6C728ED /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5382A12402C8B2B979197D /* PaywallView.swift */; };
 		79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */; };
 		81086AA8568DE9EE3E42090E /* SalaryTickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */; };
 		82E2B6DEAF299400C4BB63D3 /* SalaryEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */; };
@@ -55,11 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C5382A12402C8B2B979197D /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarViewModel.swift; sourceTree = "<group>"; };
 		4351B788095C381266882362 /* StatsBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBreakdownView.swift; sourceTree = "<group>"; };
 		4394D53E58167B737ABD8E50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		58BFF46E93EF198467FEB1EE /* SalaryEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryEngineTests.swift; sourceTree = "<group>"; };
 		629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		7523D7741B24FB42E7ECC267 /* SubscriptionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStore.swift; sourceTree = "<group>"; };
 		7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSalaryTickerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E13B1BEB906FD1767EB0B8 /* StatusBarLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarLabelView.swift; sourceTree = "<group>"; };
 		89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryTickerApp.swift; sourceTree = "<group>"; };
@@ -129,8 +133,17 @@
 			isa = PBXGroup;
 			children = (
 				CC91678DCAE821DDDAF8D90B /* SalarySettings.swift */,
+				7523D7741B24FB42E7ECC267 /* SubscriptionStore.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		5D1DA25B862FF600FE495699 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				0C5382A12402C8B2B979197D /* PaywallView.swift */,
+			);
+			path = Paywall;
 			sourceTree = "<group>";
 		};
 		6F7012BF070EA7DB8E1A2948 /* StatusBar */ = {
@@ -146,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C63E85129ABA575EC457EA /* Dashboard */,
+				5D1DA25B862FF600FE495699 /* Paywall */,
 				924FA3F30134CD374BAC6AFA /* Settings */,
 				6F7012BF070EA7DB8E1A2948 /* StatusBar */,
 			);
@@ -380,6 +394,7 @@
 			files = (
 				79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */,
 				D5167466FFE7155BCD7DA2EB /* MilestoneView.swift in Sources */,
+				47F4C2500A361DA8F6C728ED /* PaywallView.swift in Sources */,
 				924DB3B21AB820EF3736B880 /* SettingsView.swift in Sources */,
 				AE67326EDAA07A542693E444 /* StatsBreakdownView.swift in Sources */,
 				F2CCEBAA9E01DA4EDB934325 /* StatusBarLabelView.swift in Sources */,
@@ -394,6 +409,7 @@
 				E13F7C346EF236C204FB147B /* AppLogger.swift in Sources */,
 				8F81DB77061B89E00F2D7367 /* SalaryEngine.swift in Sources */,
 				1A02250D96997CBAEC324148 /* SalarySettings.swift in Sources */,
+				2761D0C805F60F71D2760803 /* SubscriptionStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,56 +6,54 @@
 > 3. 控制在 100 行以内。写不下说明你想留的是历史，删掉它
 > 4. 写给"完全不知道上文的下一棒"看，不要用只有你懂的指代
 
-**最后更新**：2026-09-06 · by antigravity · 对应 commit：`feat(app): 实现macOS状态栏每秒薪资流速与Apple HIG看板`
+**最后更新**：2026-09-06 · by antigravity · 对应 commit：`feat(settings): 支持状态栏图标颜色定制、生活目标编辑与30天试用¥1.99付费`
 
 ---
 
 ## 一、现在做到哪了
 
-核心功能完整实现并通过所有预检与单元测试。
-应用支持：
-1. 月薪输入与自定义法定计薪天数（默认21.75天），支持上下班与午休时间配置。
-2. 状态栏每秒平滑无抖动跳动（4种显示模式：今日已赚、每秒流速、紧凑金额、仅图标）。
-3. Apple HIG 原生毛玻璃弹窗看板：巨幅金额实时跳动、三联流速卡片（秒/分/时）、工时进度条与下班倒计时、打工人趣味里程碑勋章。
-4. 100% 纯逻辑 Swift Testing 单元测试全绿，`preflight.sh` 检查全绿。
+完成 3 个新功能交付：
+1. **菜单栏图标与颜色定制**：8 款精选图标与 7 种主题色彩（含自适应工作状态色与极简单色）。
+2. **生活目标与里程碑自由定制**：支持自由编辑、新增、删除打工小目标（如特调冰美式 ¥32、猫粮基金 ¥80）。
+3. **30 天试用与 ¥1.99 商业化机制**：开箱即享 30 天完整试用，到期后通过 Apple 原生 StoreKit 2 支付 ¥1.99 解锁，包含精美 Paywall 弹窗及免沙盒开发测试开关。
 
 ## 二、这一棒做了什么
 
-- 初始化项目结构并对齐 `iOS-app-sets` 规范（AGENTS.md、CLAUDE.md、GEMINI.md、DECISIONS.md、preflight.sh）
-- 编写功能规格 `specs/salary-status-bar.md`
-- 实现 `Core/Calculation/SalaryEngine.swift` 与 10 项 Swift Testing 单元测试
-- 实现 `Core/Storage/SalarySettings.swift` 与 UserDefaults 持久化
-- 实现 `Features/StatusBar/` 状态栏视图与每秒定时驱动（防抖动等宽数字）
-- 实现 `Features/Dashboard/` Apple HIG 质感弹窗看板（Hero卡片、流速卡片、工时进度、打工人里程碑）
-- 实现 `Features/Settings/` 偏好设置面板与快捷月薪调整
-- 实现 `App/SalaryTickerApp.swift` 与 `.accessory` 纯状态栏应用生命周期
-- 配置 `Package.swift` 与 `project.yml` (xcodegen)，验证 Xcode 工程与 CLI 构建均正常
+- 更新规格 `specs/salary-status-bar.md`
+- 扩展 `Core/Storage/SalarySettings.swift`：增加 `statusIcon` 与 `statusColorTheme`
+- 实现 `Core/Storage/SubscriptionStore.swift`：30 天试用倒计时计算、PRO 激活、StoreKit 2 交易监听与测试开关
+- 更新 `Features/StatusBar/`：状态栏图标与颜色动态响应设置切换，过期状态保护
+- 实现 `Features/Paywall/PaywallView.swift`：Apple 风格磨砂质感付费墙
+- 更新 `Features/Dashboard/`：顶部常驻试用/会员标识，支持快速跳转定制生活目标
+- 升级 `Features/Settings/SettingsView.swift`：可视化图标选择网格、配色色盘、目标增删改列表与会员中心
+- 扩充单元测试 `SalaryEngineTests.swift`（12 项测试用例全部秒级通过）
+- 追加架构决策 `#005`，自动化测试与 `preflight.sh` 检查全绿
 
 ## 三、下一棒从这里开始
 
-**目标**：根据需要打包签名 Release 产物或丰富更多趣味里程碑/音效反馈。
+**目标**：配置正式 App Store Connect In-App Purchase 商品或增加多设备 iCloud 同步。
 
 **入口**：
-- 双击运行 `SalaryTicker.xcodeproj` 或执行 `swift run SalaryTicker`
+- `open SalaryTicker.xcodeproj` 点击 Run
+- `swift run SalaryTicker`
 
 ## 四、当前是"半成品"的地方
 
 | 位置 | 状态 | 说明 |
 |---|---|---|
-| 无 | 已完成 | 核心功能均已完备且通过测试 |
+| 无 | 已完成 | 3 大新功能已完整闭环并通过自动化测试 |
 
 ## 五、待人工决策
 
-- [ ] 是否需要自定义应用 AppIcon 图标素材替换默认系统 SF Symbol 图标
+- [ ] 在 App Store Connect 中配置 `com.openclaw.salaryticker.unlock` 非消耗型/自动续期项目（生产上线前）
 
 ## 六、踩过的坑 / 别再试的路
 
-- 状态栏必须使用 `.monospacedDigit()`，否则每秒数字变化时宽度微颤会影响视觉体验。
-- Swift 6 中 `@MainActor` 类的 `deinit` 必须配合 `@ObservationIgnored` 与 `nonisolated(unsafe)` 管理后台 `Task`，否则触发严格并发编译报错。
-- Xcode 中如果不显式配置 `SUPPORTED_PLATFORMS = macosx` 与共享 Scheme，Xcode 会误按上一个 iOS 项目的 iOS 模拟器/设备进行编译，导致报 `'Logger' is only available in iOS 14.0` / `'Observable()' is only available in iOS 17.0`。已在 `project.yml` 中锁定 `SUPPORTED_PLATFORMS: macosx` 与 `SalaryTicker.xcscheme`。
+- SwiftUI 中 `foregroundStyle` 在三元运算符中混合使用 `Color` 和 `HierarchicalShapeStyle`（如 `.primary` 与 `.orange`）会导致编译器泛型类型推断失败，需显式指定 `Color.primary` 与 `Color.orange`。
+- Swift 6 中跨 Actor 访问类型常量（如 `Self.productId`）在 `Task.detached` 中需将常量声明为 `nonisolated static let`。
 
 ## 七、环境与验证
 
 - 自动化检查：`./scripts/preflight.sh`（全绿）
-- 编译与单测：`swift test`（10 tests passed in 0.006s）
-- Xcode 工程：`SalaryTicker.xcodeproj`（Build Succeeded，仅支持 My Mac 运行）
+- 单元测试：`swift test`（12 项测试 0.009s 全绿）
+- Xcode 工程：`SalaryTicker.xcodeproj`（编译运行正常，仅目标设备锁定 My Mac）

@@ -5,19 +5,40 @@ public struct MilestoneView: View {
     let milestones: [MilestoneItem]
     let todayEarnings: Double
     let currencySymbol: String
+    var onEditTap: (() -> Void)? = nil
 
-    public init(milestones: [MilestoneItem], todayEarnings: Double, currencySymbol: String) {
+    public init(
+        milestones: [MilestoneItem],
+        todayEarnings: Double,
+        currencySymbol: String,
+        onEditTap: (() -> Void)? = nil
+    ) {
         self.milestones = milestones
         self.todayEarnings = todayEarnings
         self.currencySymbol = currencySymbol
+        self.onEditTap = onEditTap
     }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(String(localized: "今日打工小成就"))
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.primary)
+                HStack(spacing: 4) {
+                    Text(String(localized: "今日生活小目标"))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+
+                    if let onEditTap {
+                        Button {
+                            onEditTap()
+                        } label: {
+                            Image(systemName: "pencil.circle")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .buttonStyle(.plain)
+                        .help(String(localized: "自定义生活小目标"))
+                    }
+                }
 
                 Spacer()
 

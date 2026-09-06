@@ -10,10 +10,10 @@ public struct StatusBarLabelView: View {
 
     public var body: some View {
         HStack(spacing: 5) {
-            // 状态图标：Apple 风格精致钱币/纸币图标
-            Image(systemName: "banknote.fill")
+            // 自定义状态图标与自选色彩
+            Image(systemName: viewModel.currentSettings.statusIcon)
                 .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(viewModel.statusDotColor)
+                .foregroundStyle(viewModel.resolvedColor)
 
             if !viewModel.statusText.isEmpty {
                 Text(viewModel.statusText)

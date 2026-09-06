@@ -74,6 +74,10 @@ public struct SalarySettings: Codable, Sendable, Equatable {
     public var displayMode: StatusDisplayMode
     /// 小数点位数精度 (2 或 4 位)
     public var decimalPrecision: Int
+    /// 状态栏图标 (SF Symbol 名称)
+    public var statusIcon: String
+    /// 状态栏色彩主题
+    public var statusColorTheme: String
     /// 自定义里程碑
     public var milestones: [MilestoneItem]
 
@@ -93,6 +97,8 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         currencySymbol: "¥",
         displayMode: .todayEarned,
         decimalPrecision: 2,
+        statusIcon: "banknote.fill",
+        statusColorTheme: "dynamic",
         milestones: [
             MilestoneItem(title: "提神咖啡", targetAmount: 25.0, icon: "cup.and.saucer.fill"),
             MilestoneItem(title: "午餐外卖", targetAmount: 45.0, icon: "takeoutbag.and.cup.and.straw.fill"),
@@ -118,6 +124,8 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         currencySymbol: String = "¥",
         displayMode: StatusDisplayMode = .todayEarned,
         decimalPrecision: Int = 2,
+        statusIcon: String = "banknote.fill",
+        statusColorTheme: String = "dynamic",
         milestones: [MilestoneItem] = SalarySettings.default.milestones
     ) {
         self.monthlySalary = monthlySalary
@@ -135,6 +143,8 @@ public struct SalarySettings: Codable, Sendable, Equatable {
         self.currencySymbol = currencySymbol
         self.displayMode = displayMode
         self.decimalPrecision = decimalPrecision
+        self.statusIcon = statusIcon
+        self.statusColorTheme = statusColorTheme
         self.milestones = milestones
     }
 }

@@ -7,12 +7,14 @@ import SalaryTickerCore
 @Observable
 public final class StatusBarViewModel {
     public let settingsStore: SalarySettingsStore
+    public let subscriptionStore: SubscriptionStore
     public var currentDate: Date = Date()
     @ObservationIgnored
     private nonisolated(unsafe) var timerTask: Task<Void, Never>?
 
-    public init(settingsStore: SalarySettingsStore) {
+    public init(settingsStore: SalarySettingsStore, subscriptionStore: SubscriptionStore = .shared) {
         self.settingsStore = settingsStore
+        self.subscriptionStore = subscriptionStore
         startTicker()
     }
 
@@ -73,6 +75,10 @@ public final class StatusBarViewModel {
 
     /// 状态栏呈现文本
     public var statusText: String {
+        if !subscriptionStore.isFeatureUnlocked {
+            return String(localized: "试用已到期")
+        }
+
         switch currentSettings.displayMode {
         case .todayEarned:
             return SalaryEngine.formatCurrency(
@@ -97,7 +103,7 @@ public final class StatusBarViewModel {
         }
     }
 
-    /// 状态圆点颜色
+    /// 状态圆点工作状态基色
     public var statusDotColor: Color {
         switch workStatus {
         case .working, .continuous:
@@ -108,6 +114,26 @@ public final class StatusBarViewModel {
             return .blue
         case .afterWork:
             return .secondary
+        }
+    }
+
+    /// 用户自选的主题色彩
+    public var resolvedColor: Color {
+        switch currentSettings.statusColorTheme {
+        case "emerald":
+            return .mint
+        case "gold":
+            return .yellow
+        case "skyBlue":
+            return .cyan
+        case "coral":
+            return .orange
+        case "purple":
+            return .purple
+        case "monochrome":
+            return .primary
+        default: // "dynamic"
+            return statusDotColor
         }
     }
 }
