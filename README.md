@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="Resources/AppLogo.png" width="140" height="140" alt="SalaryTicker Logo" style="border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);" />
+
 # ⏱️ SalaryTicker · 时薪
 
 ### 优雅的 macOS 状态栏实时每秒薪资流速与打工人看板
