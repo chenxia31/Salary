@@ -20,7 +20,7 @@
 
 <br/>
 
-[📥 **从 GitHub Releases 下载 DMG 安装包 (v1.0.0)**](https://github.com/chenxia31/Salary/releases/latest/download/SalaryTicker.dmg) • [✨ 核心功能](#-核心功能) • [🚀 快速开始](#-快速开始) • [🛠️ 源码构建](#%EF%B8%8F-从源码构建) • [📐 架构设计](#-架构设计与工程规范)
+[📥 **从 GitHub Releases 下载 DMG 安装包 (v1.0.1)**](https://github.com/chenxia31/Salary/releases/latest/download/SalaryTicker.dmg) • [✨ 核心功能](#-核心功能) • [🚀 快速开始](#-快速开始) • [🛠️ 源码构建](#%EF%B8%8F-从源码构建) • [📐 架构设计](#-架构设计与工程规范)
 
 <br/>
 

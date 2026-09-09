@@ -353,7 +353,7 @@ public struct SettingsView: View {
                     Text(String(localized: "税前/到手月薪"))
                         .font(.callout)
                     Spacer()
-                    TextField("25000", text: $monthlySalaryInput)
+                    TextField("80000", text: $monthlySalaryInput)
                         .textFieldStyle(.roundedBorder)
                         .frame(width: 140)
                         .multilineTextAlignment(.trailing)
@@ -501,7 +501,7 @@ public struct SettingsView: View {
                 HStack(spacing: 6) {
                     Text("SalaryTicker")
                         .font(.subheadline.weight(.bold))
-                    Text("v1.0.0")
+                    Text("v1.0.1")
                         .font(.caption2.weight(.medium))
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 5)

@@ -86,7 +86,7 @@ public struct SalarySettings: Codable, Sendable, Equatable {
     public var alipayPayQRContent: String
 
     public static let `default` = SalarySettings(
-        monthlySalary: 25000.0,
+        monthlySalary: 80000.0,
         workDaysPerMonth: 21.75,
         workStartHour: 9,
         workStartMinute: 30,
@@ -115,7 +115,7 @@ public struct SalarySettings: Codable, Sendable, Equatable {
     )
 
     public init(
-        monthlySalary: Double = 25000.0,
+        monthlySalary: Double = 80000.0,
         workDaysPerMonth: Double = 21.75,
         workStartHour: Int = 9,
         workStartMinute: Int = 30,

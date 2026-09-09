@@ -84,7 +84,7 @@
 ## 5. 数据与状态
 
 - `SalarySettings`：
-  - `monthlySalary: Double`
+  - `monthlySalary: Double` (默认 80000.0 / 80k)
   - `workDaysPerMonth: Double` (默认 21.75)
   - `workStartTime: DateComponents` (小时、分钟)
   - `workEndTime: DateComponents`
