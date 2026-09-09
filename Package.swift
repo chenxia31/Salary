@@ -22,7 +22,8 @@ let package = Package(
         .executableTarget(
             name: "SalaryTicker",
             dependencies: ["SalaryTickerCore", "SalaryTickerFeatures"],
-            path: "App"
+            path: "App",
+            exclude: ["Info.plist"]
         ),
         .testTarget(
             name: "SalaryTickerTests",

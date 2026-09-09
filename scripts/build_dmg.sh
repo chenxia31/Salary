@@ -58,9 +58,22 @@ fi
 
 echo "✅ App 编译成功: ${APP_PATH}"
 
-# 4. 组装 DMG 镜像暂存目录
+# 4. 组装 DMG 挂载卷内容
 echo "📦 组装 DMG 挂载卷内容..."
 cp -R "${APP_PATH}" "${STAGING_DIR}/SalaryTicker.app"
+
+# 确保清除隔离属性与刷新时间戳，保证 Finder 识别图标
+xattr -cr "${STAGING_DIR}/SalaryTicker.app" 2>/dev/null || true
+touch "${STAGING_DIR}/SalaryTicker.app"
+
+# 为 DMG 挂载卷配置自定义图标
+if [ -f "${PROJECT_DIR}/Resources/AppIcon.icns" ]; then
+    cp "${PROJECT_DIR}/Resources/AppIcon.icns" "${STAGING_DIR}/.VolumeIcon.icns"
+    if command -v SetFile >/dev/null 2>&1; then
+        SetFile -c icnC "${STAGING_DIR}/.VolumeIcon.icns" 2>/dev/null || true
+        SetFile -a C "${STAGING_DIR}" 2>/dev/null || true
+    fi
+fi
 
 # 创建指向 /Applications 的快捷方式，方便用户拖拽安装
 ln -s /Applications "${STAGING_DIR}/Applications"

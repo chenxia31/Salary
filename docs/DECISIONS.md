@@ -144,3 +144,16 @@
 - 代价：降低了短期赞助转化率，但赢得了极致的用户信任与开源社区口碑
 - 不可逆性：可逆
 
+---
+
+## #011 采用显式 Info.plist 与 Assets.xcassets 双轨机制彻底解决 macOS Finder 应用图标显示 · 2026-09-09 · 已定
+
+- 背景：macOS 14+ / Sonoma / Sequoia Finder 优先读取编译后的 `Assets.car` 与显式 `CFBundleIconFile` / `CFBundleIconName`。此前因 XcodeGen 默认开启 `GENERATE_INFOPLIST_FILE: YES` 导致导出的 Info.plist 缺少图标键，Finder 呈现默认线框网格占位符
+- 选项：
+  - A 仅在项目配置中传递 build setting —— 经测试 Xcode 编译不会将 `INFOPLIST_KEY_CFBundleIconFile` 注入生成的 plist
+  - B 采用标准 macOS 开发规范：创建专用 `App/Info.plist` 显式声明 `CFBundleIconFile: AppIcon`，并生成完整的 `Resources/Assets.xcassets/AppIcon.appiconset` 由 `actool` 编译生成 `Assets.car`
+- 结论：选 B，同时在 DMG 构建脚本中配置卷标图标与文件属性刷新
+- 代价：项目中增加了 `App/Info.plist` 与 `Assets.xcassets` 结构
+- 不可逆性：可逆
+
+
