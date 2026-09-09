@@ -62,22 +62,28 @@ public struct PaywallView: View {
             .padding(.top, 12)
             .padding(.horizontal, 16)
 
-            // 头部：爱心与赞助寄语
-            VStack(spacing: 6) {
-                ZStack {
+            // 头部：品牌 Logo 与赞助寄语
+            VStack(spacing: 8) {
+                ZStack(alignment: .bottomTrailing) {
+                    AppLogoView(size: 54, cornerRadius: 12)
+
+                    // 右下角暖心徽标
                     Circle()
                         .fill(
                             LinearGradient(
-                                colors: [.red.opacity(0.85), .orange.opacity(0.85)],
+                                colors: [.red, .orange],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .frame(width: 48, height: 48)
-
-                    Image(systemName: "heart.fill")
-                        .font(.title3)
-                        .foregroundStyle(.white)
+                        .frame(width: 20, height: 20)
+                        .overlay {
+                            Image(systemName: "heart.fill")
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundStyle(.white)
+                        }
+                        .offset(x: 4, y: 4)
+                        .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 1)
                 }
 
                 Text(String(localized: "赞助开发者 · 解锁全部特权"))

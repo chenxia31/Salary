@@ -11,8 +11,10 @@
 		2761D0C805F60F71D2760803 /* SubscriptionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523D7741B24FB42E7ECC267 /* SubscriptionStore.swift */; };
 		29568D82602E44DBBEEB9720 /* wechat_qr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04271F50008EAAECE87BF64C /* wechat_qr.jpg */; };
 		3796E050E94A6938F4B62D24 /* StatusBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C3F86B186EE6A57022F4D /* StatusBarViewModel.swift */; };
+		38B2F379B0666144EF6D933E /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94F26782ED7B2242DB04259 /* AppLogoView.swift */; };
 		43FB59C9B159B7D4E45C88D6 /* libSalaryTickerCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7793605AED6441CCC65AF8FE /* libSalaryTickerCore.a */; };
 		47F4C2500A361DA8F6C728ED /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5382A12402C8B2B979197D /* PaywallView.swift */; };
+		50D87E46823E3E28DCFD6ACC /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A3685FA823EECA8B719FD936 /* AppLogo.png */; };
 		6C2E8EE29C1B03C138748A0E /* alipay_qr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F3C73791E5CEBA567812F71 /* alipay_qr.jpg */; };
 		7529CB74F451EF08866FC450 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08C63DD89D11FA28D56FD /* QRCodeGenerator.swift */; };
 		79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D2DCDE96CB923EF1F8E9C /* DashboardView.swift */; };
@@ -76,8 +78,10 @@
 		79E13B1BEB906FD1767EB0B8 /* StatusBarLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarLabelView.swift; sourceTree = "<group>"; };
 		89FC70DC11C2FD7FEFFEA72B /* SalaryTickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryTickerApp.swift; sourceTree = "<group>"; };
 		A0F46229A5B9023693E2CEAF /* libSalaryTickerFeatures.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSalaryTickerFeatures.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3685FA823EECA8B719FD936 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
 		A6E9C9C0F364A9012AFCCDD4 /* SalaryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryEngine.swift; sourceTree = "<group>"; };
 		A7C567E514E86BF17C6D5EE4 /* SalaryTicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalaryTicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94F26782ED7B2242DB04259 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
 		BF5779EFB7DBC8301D314EAE /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		CC91678DCAE821DDDAF8D90B /* SalarySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalarySettings.swift; sourceTree = "<group>"; };
 		E0AA12156CA981B7E9FC442C /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 		7D0BF3C673A420E6C91AD418 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				B1AC4C7830A2DFEBFBF094D9 /* Common */,
 				A5C63E85129ABA575EC457EA /* Dashboard */,
 				5D1DA25B862FF600FE495699 /* Paywall */,
 				924FA3F30134CD374BAC6AFA /* Settings */,
@@ -205,11 +210,20 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		B1AC4C7830A2DFEBFBF094D9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A94F26782ED7B2242DB04259 /* AppLogoView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B6F8C70DE491EB2AF728305F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				4F3C73791E5CEBA567812F71 /* alipay_qr.jpg */,
 				11A19A4C7CBB03AE8B040A3B /* AppIcon.icns */,
+				A3685FA823EECA8B719FD936 /* AppLogo.png */,
 				04271F50008EAAECE87BF64C /* wechat_qr.jpg */,
 			);
 			path = Resources;
@@ -363,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF392B95C96C543A6C57312D /* AppIcon.icns in Resources */,
+				50D87E46823E3E28DCFD6ACC /* AppLogo.png in Resources */,
 				6C2E8EE29C1B03C138748A0E /* alipay_qr.jpg in Resources */,
 				29568D82602E44DBBEEB9720 /* wechat_qr.jpg in Resources */,
 			);
@@ -426,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B2F379B0666144EF6D933E /* AppLogoView.swift in Sources */,
 				79A2942325E57FC683C9DF62 /* DashboardView.swift in Sources */,
 				D5167466FFE7155BCD7DA2EB /* MilestoneView.swift in Sources */,
 				47F4C2500A361DA8F6C728ED /* PaywallView.swift in Sources */,

@@ -41,7 +41,8 @@ public struct SettingsView: View {
     public var body: some View {
         VStack(spacing: 0) {
             // 顶部导航栏
-            HStack {
+            HStack(spacing: 8) {
+                AppLogoView(size: 24, cornerRadius: 5)
                 Text(String(localized: "偏好设置"))
                     .font(.headline.weight(.semibold))
 
@@ -79,7 +80,10 @@ public struct SettingsView: View {
                     // 5. 工时与作息
                     workScheduleSection
 
-                    // 6. 底部操作
+                    // 6. 软件关于与品牌
+                    aboutSection
+
+                    // 7. 底部操作
                     bottomActions
                 }
                 .padding(20)
@@ -486,6 +490,50 @@ public struct SettingsView: View {
             .padding(14)
             .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 12))
         }
+    }
+
+    // MARK: - 软件关于与品牌
+    private var aboutSection: some View {
+        HStack(spacing: 14) {
+            AppLogoView(size: 42, cornerRadius: 9)
+
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 6) {
+                    Text("SalaryTicker")
+                        .font(.subheadline.weight(.bold))
+                    Text("v1.0.0")
+                        .font(.caption2.weight(.medium))
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 1)
+                        .background(.quaternary, in: Capsule())
+                }
+
+                Text(String(localized: "macOS 状态栏实时薪资流速看板 · 打工人的每秒确幸"))
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+
+                HStack(spacing: 8) {
+                    Text(String(localized: "纯本地运行 · 隐私无忧 · 随喜赞助"))
+                        .font(.caption2)
+                        .foregroundStyle(.tint)
+
+                    Spacer()
+
+                    if let url = URL(string: "https://github.com/chenxia31/Salary") {
+                        Link(destination: url) {
+                            HStack(spacing: 3) {
+                                Image(systemName: "link")
+                                Text("GitHub")
+                            }
+                            .font(.caption2)
+                        }
+                    }
+                }
+            }
+        }
+        .padding(12)
+        .background(.quaternary.opacity(0.35), in: RoundedRectangle(cornerRadius: 12))
     }
 
     // MARK: - 底部操作

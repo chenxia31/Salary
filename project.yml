@@ -51,6 +51,7 @@ targets:
     sources:
       - path: App
       - path: Resources/AppIcon.icns
+      - path: Resources/AppLogo.png
       - path: Resources/alipay_qr.jpg
       - path: Resources/wechat_qr.jpg
     dependencies:

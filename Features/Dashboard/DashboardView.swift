@@ -64,10 +64,8 @@ public struct DashboardView: View {
     // MARK: - 顶部导航
     private var headerBar: some View {
         HStack {
-            HStack(spacing: 6) {
-                Image(systemName: "yensign.circle.fill")
-                    .font(.title3)
-                    .foregroundStyle(.tint)
+            HStack(spacing: 7) {
+                AppLogoView(size: 22, cornerRadius: 5)
                 Text(String(localized: "时薪"))
                     .font(.headline.weight(.bold))
                 Text("SalaryTicker")

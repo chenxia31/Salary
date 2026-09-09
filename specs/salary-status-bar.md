@@ -30,14 +30,17 @@
   - 打工人趣味里程碑勋章（支持完全自定义目标名称、金额与图标）。
   - 月度累计收入与月度进度条。
   - 快捷设置与一键修改薪资弹窗。
-- 随喜赞助与二维码激活机制：
+- 随喜赞助与诚信激活机制（Honor System）：
   - 首次安装激活 30 天免费完整试用期。
   - 支持三档暖心爱心赞助选择：
     - 💧 ¥1.99 · 喝杯水（解渴润喉）
     - 🍗 ¥5.99 · 加鸡腿（元气满满）
     - ☕ ¥9.99 · 瑞幸咖啡（灵感飞扬）
   - 默认展示用户专属支付宝收款码（含头像），支持微信/支付宝双通道扫码切换。
-  - 用户扫码后点击「我已完成赞助，点击激活全部特权」立即获得永久 PRO 授权。
+  - 用户扫码后点击「我已完成赞助，点击激活全部特权」立即获得永久 PRO 授权（100% 本地离线隐私，零服务器成本）。
+- 品牌视觉与 Logo 全场景贯通：
+  - 精密机械钟表与金融荧光流速脉冲高定 Logo（`AppLogoView`）。
+  - 下拉看板顶部、随喜赞助弹窗、偏好设置导航栏与关于卡片统一展现品牌 Logo 与版本标识。
 - 纯逻辑计算引擎 `SalaryEngine` 与试用管理器独立且具备单元测试覆盖。
 
 **明确不做**：
@@ -71,6 +74,7 @@
 | `Features/StatusBar/StatusBarController.swift` | 新增 | 状态栏定时器驱动与状态管理 |
 | `Features/Dashboard/DashboardView.swift` | 新增 | Apple 风格弹窗面板 |
 | `Features/Dashboard/MilestoneView.swift` | 新增 | 成就里程碑组件 |
+| `Features/Common/AppLogoView.swift` | 新增 | 品牌 Logo 组件与资源加载回退 |
 | `Features/Settings/SettingsView.swift` | 新增 | 薪资与工时设置表单 |
 | `App/SalaryTickerApp.swift` | 新增 | macOS 应用入口与 MenuBarExtra |
 | `Tests/SalaryEngineTests.swift` | 新增 | 纯逻辑 Swift Testing 单元测试 |
