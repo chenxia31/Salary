@@ -24,11 +24,12 @@ public struct PaywallView: View {
     @Bindable var subscriptionStore: SubscriptionStore
     @Environment(\.dismiss) private var dismiss
 
-    // 赞助档位列表: 1.99喝杯水, 5.99加鸡腿, 9.99瑞幸咖啡
+    // 赞助档位列表: 0元无须赞助, 1.99喝杯水, 5.99加鸡腿, 9.99瑞幸咖啡
     private let tiers: [SponsorTier] = [
-        SponsorTier(id: 0, price: "¥1.99", title: String(localized: "喝杯水"), note: String(localized: "解渴润喉"), icon: "drop.fill", color: .cyan),
-        SponsorTier(id: 1, price: "¥5.99", title: String(localized: "加鸡腿"), note: String(localized: "元气满满"), icon: "flame.fill", color: .orange),
-        SponsorTier(id: 2, price: "¥9.99", title: String(localized: "瑞幸咖啡"), note: String(localized: "灵感飞扬"), icon: "cup.and.saucer.fill", color: .brown)
+        SponsorTier(id: 0, price: "¥0", title: String(localized: "无须赞助"), note: String(localized: "打工不易"), icon: "gift.fill", color: .green),
+        SponsorTier(id: 1, price: "¥1.99", title: String(localized: "喝杯水"), note: String(localized: "解渴润喉"), icon: "drop.fill", color: .cyan),
+        SponsorTier(id: 2, price: "¥5.99", title: String(localized: "加鸡腿"), note: String(localized: "元气满满"), icon: "flame.fill", color: .orange),
+        SponsorTier(id: 3, price: "¥9.99", title: String(localized: "瑞幸咖啡"), note: String(localized: "灵感飞扬"), icon: "cup.and.saucer.fill", color: .brown)
     ]
 
     // 当前选中的赞助档位
@@ -103,8 +104,8 @@ public struct PaywallView: View {
                     .background(.quaternary, in: Capsule())
             }
 
-            // 三档赞助金额选择卡片
-            HStack(spacing: 10) {
+            // 赞助档位选择卡片（含0元档）
+            HStack(spacing: 8) {
                 ForEach(tiers) { tier in
                     sponsorTierCard(tier: tier, isSelected: selectedTierIndex == tier.id)
                         .onTapGesture {
@@ -116,7 +117,7 @@ public struct PaywallView: View {
             }
             .padding(.horizontal, 16)
 
-            // 二维码扫码支付卡片
+            // 二维码扫码支付卡片 / 0元免费激活卡片
             if subscriptionStore.isProUnlocked {
                 unlockedSuccessView
             } else {
@@ -133,31 +134,34 @@ public struct PaywallView: View {
             .foregroundStyle(.secondary)
             .padding(.bottom, 16)
         }
-        .frame(width: 390)
+        .frame(width: 410)
         .background(.ultraThinMaterial)
     }
 
     // 单个赞助档位卡片
     private func sponsorTierCard(tier: SponsorTier, isSelected: Bool) -> some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 3) {
             Image(systemName: tier.icon)
-                .font(.title3)
+                .font(.body.weight(.semibold))
                 .foregroundStyle(tier.color)
 
             Text(tier.price)
-                .font(.headline.weight(.bold))
+                .font(.subheadline.weight(.bold))
                 .foregroundStyle(.primary)
 
             Text(tier.title)
-                .font(.caption.weight(.semibold))
+                .font(.caption2.weight(.bold))
                 .foregroundStyle(.primary)
+                .lineLimit(1)
 
             Text(tier.note)
-                .font(.caption2)
+                .font(.system(size: 9))
                 .foregroundStyle(.secondary)
+                .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
+        .padding(.horizontal, 2)
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(isSelected ? tier.color.opacity(0.12) : Color.clear)
@@ -168,8 +172,69 @@ public struct PaywallView: View {
         )
     }
 
-    // 二维码扫码支付卡片
+    // 二维码扫码支付卡片 / 免费激活卡片
     private var qrPaymentCardView: some View {
+        VStack(spacing: 10) {
+            if currentTier.price == "¥0" {
+                freeTierContent
+            } else {
+                paidQRContent
+            }
+        }
+        .padding(.vertical, 10)
+        .background(.quaternary.opacity(0.35), in: RoundedRectangle(cornerRadius: 12))
+        .padding(.horizontal, 16)
+    }
+
+    // 0元无须赞助专属激活区
+    private var freeTierContent: some View {
+        VStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(.green.opacity(0.15))
+                    .frame(width: 52, height: 52)
+                Image(systemName: "gift.fill")
+                    .font(.system(size: 26))
+                    .foregroundStyle(.green)
+            }
+
+            VStack(spacing: 4) {
+                Text(String(localized: "打工人不为难打工人"))
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(.primary)
+
+                Text(String(localized: "生活不易，无需赞助也可畅享全功能！\n点击下方按钮直接免费激活永久 PRO 特权，祝您早日下班 🎉"))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(2)
+                    .padding(.horizontal, 12)
+            }
+
+            Button {
+                withAnimation(.spring(duration: 0.35)) {
+                    subscriptionStore.unlockProDirectly()
+                    justActivated = true
+                }
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "sparkles")
+                    Text(String(localized: "直接免费激活全部特权"))
+                        .font(.subheadline.weight(.bold))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.green)
+            .controlSize(.regular)
+            .padding(.horizontal, 16)
+        }
+        .padding(.vertical, 10)
+    }
+
+    // 付费扫码区
+    private var paidQRContent: some View {
         VStack(spacing: 10) {
             // 渠道选择器 (支付宝 / 微信)
             Picker("", selection: $paymentChannel) {
@@ -237,9 +302,6 @@ public struct PaywallView: View {
             .controlSize(.regular)
             .padding(.horizontal, 16)
         }
-        .padding(.vertical, 10)
-        .background(.quaternary.opacity(0.35), in: RoundedRectangle(cornerRadius: 12))
-        .padding(.horizontal, 16)
     }
 
     // 已解锁状态展示
@@ -253,7 +315,7 @@ public struct PaywallView: View {
                 .font(.headline.weight(.bold))
                 .foregroundStyle(.primary)
 
-            Text(String(localized: "非常感谢您的暖心赞助！您已成为 SalaryTicker 尊贵赞助者，所有高定主题与功能终身开放。"))
+            Text(String(localized: "非常感谢您的支持与厚爱！您已成为 SalaryTicker 永久 PRO 特权用户，所有高定主题与功能终身开放。"))
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

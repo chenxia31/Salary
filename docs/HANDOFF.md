@@ -6,38 +6,35 @@
 > 3. 控制在 100 行以内。写不下说明你想留的是历史，删掉它
 > 4. 写给"完全不知道上文的下一棒"看，不要用只有你懂的指代
 
-**最后更新**：2026-09-09 · by antigravity · 对应 commit：`feat(branding): 在应用全场景集成高定 Logo 并确立随喜赞助发布版`
+**最后更新**：2026-09-09 · by antigravity · 对应 commit：`feat(sponsor): 新增「¥0 无须赞助」档位支持一键免费直接激活 PRO`
 
 ---
 
 ## 一、现在做到哪了
 
-1. **确立 Option 4 随喜赞助模式 (Honor System)**：
-   - 彻底摆脱传统商业软件的激活码与网络鉴权捆绑，用户扫码赞助后可直接自主点亮 PRO 永久会员。
-   - 100% 本地运行、0 数据上报、0 隐私泄露、0 服务器维护成本。
-2. **全应用界面统一植入高定品牌 Logo**：
-   - 新增 `Features/Common/AppLogoView.swift`，支持全套 Retina 高清裁切与阴影。
-   - **状态栏看板头部**：替换原通用符号，呈现 22x22 精致微缩表盘流速 Logo。
-   - **赞助与特权弹窗**：顶部核心展示 54x54 品牌 Logo 与暖心微光徽章。
-   - **偏好设置与关于**：导航栏带 Logo 标识，底部新增关于卡片展示 v1.0.0 与开源主页。
-3. **发布级 DMG 镜像重新打包就绪**：
-   - `Resources/AppLogo.png` 已并入 Xcode 应用 Target 资源。
-   - 运行 `./scripts/build_dmg.sh` 编译 Release 并组装 `dist/SalaryTicker.dmg`（4.4MB）。
+1. **四档赞助体系与「¥0 无须赞助」零门槛激活全面落地**：
+   - 包含：🎁 ¥0 无须赞助、💧 ¥1.99 喝杯水、🍗 ¥5.99 加鸡腿、☕ ¥9.99 瑞幸咖啡。
+   - 选中「¥0 无须赞助」时，弹窗自动切换为温情关怀卡片（"打工人不为难打工人"），提供一键免扫码直接激活按钮。
+   - 选中其余赞助档位时，正常显示支付宝/微信收款二维码与金额意向。
+2. **全界面品牌 Logo 深度贯通**：
+   - `AppLogoView` 全面接入状态栏主看板头部、随喜赞助中心、偏好设置导航栏与关于卡片。
+3. **发布镜像 DMG 编译完成**：
+   - 重新运行 `./scripts/build_dmg.sh` 编译 Universal Release 并打包至 `dist/SalaryTicker.dmg`（4.4MB）。
 4. **质量与工程状态**：
    - 12 项 Swift Testing 单元测试全部通过，预检脚本 `./scripts/preflight.sh` 全绿。
 
 ## 二、这一棒做了什么
 
-- 实现 `Features/Common/AppLogoView.swift` 原生品牌 Logo 组件，具备多重回退加载。
-- 在 `DashboardView`、`PaywallView`、`SettingsView` 全场景深度接入品牌 Logo。
-- 在 `project.yml` 中补齐 `AppLogo.png` 依赖并重新生成 Xcode 工程。
-- 确立并记录 Decision #009（Honor System 随喜赞助机制）。
-- 重新构建 Release DMG 镜像 (`dist/SalaryTicker.dmg`)。
-- 运行 `./scripts/preflight.sh` 门禁全绿，更新 spec 与接力文档。
+- 在 `PaywallView.swift` 中新增「¥0 无须赞助（打工不易）」档位。
+- 拆分 0 元专属免费激活视图与付费扫码卡片逻辑，自适应 4 档卡片布局（宽度调整至 410pt）。
+- 更新 `SettingsView.swift` 中的会员副标题与关于栏文案，突出随喜赞助与免费激活双轨模式。
+- 确立并记录 Decision #010（新增 ¥0 无须赞助零门槛档位）。
+- 重新编译 Release 并打包生成最新 `dist/SalaryTicker.dmg`。
+- 跑通 `./scripts/preflight.sh` 门禁，更新 spec 与接力文档。
 
 ## 三、下一棒从这里开始
 
-**目标**：在 GitHub Releases 中创建正式发布标签（如 `v1.0.0`），上传 `dist/SalaryTicker.dmg`。
+**目标**：在 GitHub Releases 中创建发布标签（如 `v1.0.0`），上传 `dist/SalaryTicker.dmg`。
 
 **入口**：
 - 远程仓库：`https://github.com/chenxia31/Salary.git`
@@ -48,7 +45,7 @@
 
 | 位置 | 状态 | 说明 |
 |---|---|---|
-| 无 | 完整交付 | UI Logo 贯通、随喜赞助、测试与 Release DMG 均已闭环并达到工业级发布标准 |
+| 无 | 完整交付 | 0 元无须赞助、随喜扫码、品牌 Logo、Release DMG 均已闭环并达到工业级发布标准 |
 
 ## 五、待人工决策
 
@@ -56,11 +53,11 @@
 
 ## 六、踩过的坑 / 别再试的路
 
-- 沙盒环境下运行 `swift test` 可能会因为无法写入 `/var/folders` 下的 Clang 缓存而报错，需 BypassSandbox 或通过 preflight 自动化执行。
-- `project.yml` 变更后运行 `xcodegen generate` 自动同步 Xcode 结构，避免手改 `.pbxproj`。
+- 4 档卡片在 390 宽度下略微紧凑，调整弹窗宽度至 410pt 并精简字号后视觉极度舒适。
+- 0 元档位无需展示收款二维码，避免增加用户心理压力，直接提供一键激活。
 
 ## 七、环境与验证
 
 - 预检门禁：`./scripts/preflight.sh`（全绿）
-- 单元测试：`swift test`（12 项测试 0.007s 全绿）
+- 单元测试：`swift test`（12 项测试 0.006s 全绿）
 - DMG 镜像：`dist/SalaryTicker.dmg`（打包生成成功，大小 4.4MB）

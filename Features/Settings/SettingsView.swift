@@ -112,7 +112,7 @@ public struct SettingsView: View {
                     Text(subscriptionStore.statusBadgeText)
                         .font(.callout.weight(.bold))
                         .foregroundStyle(subscriptionStore.isProUnlocked ? .green : .orange)
-                    Text(String(localized: "30 天全功能免费试用 · 随喜赞助喝杯水解锁"))
+                    Text(String(localized: "30 天全功能免费试用 · 随喜赞助或免费直接激活"))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
@@ -514,7 +514,7 @@ public struct SettingsView: View {
                     .foregroundStyle(.secondary)
 
                 HStack(spacing: 8) {
-                    Text(String(localized: "纯本地运行 · 隐私无忧 · 随喜赞助"))
+                    Text(String(localized: "纯本地运行 · 隐私无忧 · 随喜赞助 / 免费激活"))
                         .font(.caption2)
                         .foregroundStyle(.tint)
 
