@@ -15,11 +15,12 @@
 [![Platform](https://img.shields.io/badge/Platform-Native%20SwiftUI%20%26%20AppKit-blue?style=flat-square)](https://developer.apple.com/xcode/swiftui/)
 [![StoreKit](https://img.shields.io/badge/StoreKit-2.0%20In--App%20Purchase-orange?style=flat-square)](https://developer.apple.com/storekit/)
 [![Tests](https://img.shields.io/badge/Tests-12%2F12%20Passed%20(100%25)-brightgreen?style=flat-square)](https://github.com/chenxia31/Salary)
+[![Release](https://img.shields.io/github/v/release/chenxia31/Salary?color=brightgreen&style=flat-square)](https://github.com/chenxia31/Salary/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)](LICENSE)
 
 <br/>
 
-[📥 **下载体验 DMG 安装包 (v1.0.0)**](https://github.com/chenxia31/Salary/raw/main/dist/SalaryTicker.dmg) • [✨ 核心功能](#-核心功能) • [🚀 快速开始](#-快速开始) • [🛠️ 源码构建](#%EF%B8%8F-从源码构建) • [📐 架构设计](#-架构设计与工程规范)
+[📥 **从 GitHub Releases 下载 DMG 安装包 (v1.0.0)**](https://github.com/chenxia31/Salary/releases/latest/download/SalaryTicker.dmg) • [✨ 核心功能](#-核心功能) • [🚀 快速开始](#-快速开始) • [🛠️ 源码构建](#%EF%B8%8F-从源码构建) • [📐 架构设计](#-架构设计与工程规范)
 
 <br/>
 
@@ -81,13 +82,14 @@
   - 智能工作状态机：*开工等待中* → *黄金入账中* → *午休充电中 (金额冻结)* → *打卡下班啦 (锁定全额日薪)*。
   - 支持 **24/7 全天候流速计薪模式**（适合自由职业者、独立开发者与睡后收入流感知）。
 
-### 5. 💖 30 天超长试用与三档随喜爱心赞助
+### 5. 💖 30 天超长试用、随喜赞助与 0 元免费激活 (Honor System)
 - **诚意试用**：首次安装享有长达 30 天无限制完整功能体验。
-- **随喜赞助模式**：试用期结束后提供三档暖心爱心赞助选择：
+- **诚信随喜打赏**：
+  - 🎁 **¥0 · 无须赞助**：打工人不为难打工人，无需赞助直接免扫码一键免费开启永久 PRO 特权！
   - 💧 **¥1.99 · 喝杯水**（解渴润喉）
   - 🍗 **¥5.99 · 加鸡腿**（元气满满）
   - ☕ **¥9.99 · 瑞幸咖啡**（灵感飞扬）
-- **支付宝专属收款码 & 微信扫码**：直接使用手机扫一扫赞助任意金额，点击一键激活永久 PRO 特权，零强制弹窗。
+- **支付宝专属收款码 & 微信扫码**：直接使用手机扫一扫赞助任意金额，点击一键激活永久 PRO 特权，100% 本地离线隐私安全。
 
 ---
 
